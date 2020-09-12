@@ -1,0 +1,32 @@
+{
+  "log_entry01": {
+    "incident_id": "incident01",
+    "content": "This is my first note!",
+    "created_by": "MYUSERIDHERE",
+    "created_at": "TIMESTAMP",
+    "updated_by": null,
+    "updated_at": null,
+    "deleted_by": null,
+    "deleted_at": null
+  },
+  "log_entry02": {
+    "incident_id": "incident01",
+    "content": "Yeah, another note. Woohoo. Yay.",
+    "created_by": "MYUSERIDHERE",
+    "created_at": "TIMESTAMP",
+    "updated_by": null,
+    "updated_at": null,
+    "deleted_by": null,
+    "deleted_at": null
+  },
+  "log_entry03": {
+    "incident_id": "incident02",
+    "content": "Note on the other incident.",
+    "created_by": "SOMEOTHERUSER",
+    "created_at": "TIMESTAMP",
+    "updated_by": null,
+    "updated_at": null,
+    "deleted_by": null,
+    "deleted_at": null
+  }
+}

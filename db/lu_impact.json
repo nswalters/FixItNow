@@ -1,0 +1,17 @@
+{
+  "impact01": {
+    "name": "Operational",
+    "color": "MYCOLORHERE",
+    "icon": null
+  },
+  "impact02": {
+    "name": "Degraded Performance",
+    "color": "MYCOLORHERE",
+    "icon": null
+  },
+  "impact03": {
+    "name": "Maintenance",
+    "color": "MYCOLORHERE",
+    "icon": null
+  }
+}
