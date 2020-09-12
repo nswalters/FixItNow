@@ -39,8 +39,14 @@ svg.teal-600 {
 
 .custom-nav-items {
   height: calc(100vh - 126px);
-}
 
-.topic-items svg {
-  margin-bottom: 1.25rem;
+  .topic-item {
+    height: 45px;
+    width: 45px;
+    border-radius: 5px;
+
+    &.selected {
+      background-color: $gray-900;
+    }
+  }
 }
