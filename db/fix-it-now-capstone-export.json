@@ -1,0 +1,146 @@
+{
+  "incident" : {
+    "incident01" : {
+      "created_at" : 1599870966941,
+      "created_by" : "MYUSERIDHERE",
+      "description" : "incident01Description",
+      "impact_id" : "impact01",
+      "is_public" : false,
+      "severity_id" : "severity01",
+      "status_type_id" : "status_type01",
+      "title" : "incident01Title"
+    },
+    "incident02" : {
+      "created_at" : 1599870966941,
+      "created_by" : "MYUSERIDHERE",
+      "description" : "incident02Description",
+      "impact_id" : "impact02",
+      "is_public" : true,
+      "severity_id" : "severity02",
+      "status_type_id" : "status_type02",
+      "title" : "incident02Title"
+    }
+  },
+  "incident_user" : {
+    "incident_user01" : {
+      "incident_id" : "incident01",
+      "user_id" : "MYUSERIDHERE"
+    },
+    "incident_user02" : {
+      "incident_id" : "incident02",
+      "user_id" : "MYUSERIDHERE"
+    }
+  },
+  "log_entry" : {
+    "log_entry01" : {
+      "content" : "This is my first note!",
+      "created_at" : "TIMESTAMP",
+      "created_by" : "MYUSERIDHERE",
+      "incident_id" : "incident01"
+    },
+    "log_entry02" : {
+      "content" : "Yeah, another note. Woohoo. Yay.",
+      "created_at" : "TIMESTAMP",
+      "created_by" : "MYUSERIDHERE",
+      "incident_id" : "incident01"
+    },
+    "log_entry03" : {
+      "content" : "Note on the other incident.",
+      "created_at" : "TIMESTAMP",
+      "created_by" : "SOMEOTHERUSER",
+      "incident_id" : "incident02"
+    }
+  },
+  "lu_impact" : {
+    "impact01" : {
+      "color" : "MYCOLORHERE",
+      "name" : "Operational"
+    },
+    "impact02" : {
+      "color" : "MYCOLORHERE",
+      "name" : "Degraded Performance"
+    },
+    "impact03" : {
+      "color" : "MYCOLORHERE",
+      "name" : "Maintenance"
+    }
+  },
+  "lu_severity" : {
+    "severity01" : {
+      "color" : "MYCOLORHERE",
+      "name" : "P1"
+    },
+    "severity02" : {
+      "color" : "MYCOLORHERE",
+      "name" : "P2"
+    },
+    "severity03" : {
+      "color" : "MYCOLORHERE",
+      "name" : "P3"
+    },
+    "severity04" : {
+      "color" : "MYCOLORHERE",
+      "name" : "M"
+    }
+  },
+  "lu_status_type" : {
+    "status_type01" : {
+      "color" : "MYCOLORHERE",
+      "name" : "Investigating"
+    },
+    "status_type02" : {
+      "color" : "MYCOLORHERE",
+      "name" : "Resolved"
+    },
+    "status_type03" : {
+      "color" : "MYCOLORHERE",
+      "name" : "Validation"
+    }
+  },
+  "service" : {
+    "service01" : {
+      "created_at" : "TIMESTAMP",
+      "created_by" : "USERID",
+      "description" : "RabbitMQ instance which queues message notifications for ingestion by client systems.",
+      "impact_id" : "impact01",
+      "is_public" : true,
+      "name" : "Message Queue"
+    },
+    "service02" : {
+      "created_at" : "TIMESTAMP",
+      "created_by" : "USERID",
+      "description" : "Company website which serves as the main client portal to the company's resources.",
+      "impact_id" : "impact02",
+      "is_public" : true,
+      "name" : "Website"
+    }
+  },
+  "service_incident" : {
+    "service_incident01" : {
+      "incident_id" : "incident01",
+      "service_id" : "service02"
+    },
+    "service_incident02" : {
+      "incident_id" : "incident_02",
+      "service_id" : "service01"
+    }
+  },
+  "service_user" : {
+    "service_user01" : {
+      "service_id" : "service01",
+      "user_id" : "SOMEOTHERUSER"
+    },
+    "service_user02" : {
+      "service_id" : "service02",
+      "user_id" : "MYUSERIDHERE"
+    }
+  },
+  "user" : {
+    "user01" : {
+      "uid" : "MYUSERIDHERE"
+    },
+    "user02" : {
+      "uid" : "SOMEOTHERUSER"
+    }
+  }
+}

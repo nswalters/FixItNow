@@ -1,0 +1,17 @@
+{
+  "status_type01": {
+    "name": "Investigating",
+    "color": "MYCOLORHERE",
+    "icon": null
+  },
+  "status_type02": {
+    "name": "Resolved",
+    "color": "MYCOLORHERE",
+    "icon": null
+  },
+  "status_type03": {
+    "name": "Validation",
+    "color": "MYCOLORHERE",
+    "icon": null
+  }
+}

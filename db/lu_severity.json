@@ -1,0 +1,22 @@
+{
+  "severity01": {
+    "name": "P1",
+    "color": "MYCOLORHERE",
+    "icon": null
+  },
+  "severity02": {
+    "name": "P2",
+    "color": "MYCOLORHERE",
+    "icon": null
+  },
+  "severity03": {
+    "name": "P3",
+    "color": "MYCOLORHERE",
+    "icon": null
+  },
+  "severity04": {
+    "name": "M",
+    "color": "MYCOLORHERE",
+    "icon": null
+  }
+}

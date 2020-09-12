@@ -1,0 +1,28 @@
+{
+  "service01": {
+    "name": "Message Queue",
+    "impact_id": "impact01",
+    "description": "RabbitMQ instance which queues message notifications for ingestion by client systems.",
+    "is_public": true,
+    "created_by": "USERID",
+    "created_at": "TIMESTAMP",
+    "updated_by": null,
+    "updated_at": null,
+    "deleted_at": null,
+    "deleted_by": null,
+    "icon": null
+  },
+  "service02": {
+    "name": "Website",
+    "impact_id": "impact02",
+    "description": "Company website which serves as the main client portal to the company's resources.",
+    "is_public": true,
+    "created_by": "USERID",
+    "created_at": "TIMESTAMP",
+    "updated_by": null,
+    "updated_at": null,
+    "deleted_at": null,
+    "deleted_by": null,
+    "icon": null
+  }
+}

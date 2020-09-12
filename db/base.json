@@ -1,0 +1,12 @@
+{
+  "incident": "placeholder",
+  "incident_user": "placeholder",
+  "service_incident": "placeholder",
+  "service": "placeholder",
+  "service_user": "placeholder",
+  "user": "placeholder",
+  "log_entry": "placeholder",
+  "lu_status_type": "placeholder",
+  "lu_severity": "placeholder",
+  "lu_impact": "placeholder"
+}

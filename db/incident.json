@@ -1,0 +1,30 @@
+{
+  "incident01": {
+    "title": "incident01Title",
+    "description": "incident01Description",
+    "is_public": false,
+    "status_type_id": "status_type01",
+    "severity_id": "severity01",
+    "impact_id": "impact01",
+    "created_at": 1599870966941,
+    "updated_at": null,
+    "closed_at": null,
+    "created_by": "MYUSERIDHERE",
+    "updated_by": null,
+    "closed_by": null
+  },
+  "incident02": {
+    "title": "incident02Title",
+    "description": "incident02Description",
+    "is_public": true,
+    "status_type_id": "status_type02",
+    "severity_id": "severity02",
+    "impact_id": "impact02",
+    "created_at": 1599870966941,
+    "updated_at": null,
+    "closed_at": null,
+    "created_by": "MYUSERIDHERE",
+    "updated_by": null,
+    "closed_by": null
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "service_user01": {
+    "service_id": "service01",
+    "user_id": "SOMEOTHERUSER"
+  },
+  "service_user02": {
+    "service_id": "service02",
+    "user_id": "MYUSERIDHERE"
+  }
+}
