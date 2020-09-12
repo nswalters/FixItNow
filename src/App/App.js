@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
 
-import Navbar from '../components/Navbar';
+import Navbar from '../components/Navbar/Navbar';
 
 class App extends React.Component {
   render() {
@@ -9,7 +9,6 @@ class App extends React.Component {
       <div className="App">
         <Navbar />
         <div className="content-area">
-          <h3>ContentArea</h3>
         </div>
       </div>
     );
