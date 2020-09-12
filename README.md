@@ -1,68 +1,38 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Fix It Now!
 
-## Available Scripts
+![stability](https://img.shields.io/badge/status-WIP-lightgrey)
 
-In the project directory, you can run:
+This is my front-end capstone project that I created while participating in the [Nashville Software School - Full Stack Web Developer Python/Django](http://nashvillesoftwareschool.com).
 
-### `npm start`
+The goal of this project is to build an application which helps document service outage incidents and communicate those outages to the public, as part of a robust incident management process.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+One of the things I’ve faced in my career of working with various systems, is that communicating updates with all potential stakeholders (public or internal) and then maintaining a record of that communication for later analyses can be difficult (this also includes the spousal unit at home for the various technologies the family uses).  This is my attempt at creating a centralized, easy-to-update application that supports those goals.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Screenshot
+_To be added later._
 
-### `npm test`
+## Deployed Project
+_To be added later._
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies Used
+[![JavaScript](https://img.shields.io/badge/-JavaScript-2c9fcc?style=flat-square)](#) [![SASS](https://img.shields.io/badge/-SASS-2c9fcc?style=flat-square)](#) [![HTML](https://img.shields.io/badge/-HTML-2c9fcc?style=flat-square)](#) [![Firebase](https://img.shields.io/badge/-Firebase-2c9fcc?style=flat-square)](#) [![Axios](https://img.shields.io/badge/-Axios-2c9fcc?style=flat-square)](#) [![React](https://img.shields.io/badge/-React-2c9fcc?style=flat-square)](#)
 
-### `npm run build`
+## How to Run
+This project uses webpack to compile the code.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1) Clone the project: `git clone git@github.com:nswalters/FixItNow.git`
+2) Change directories to the cloned project: `cd FixItNow`
+3) Use NPM to install required packages: `npm install`
+4) After packages have been installed, run the local webserver using: `npm start`
+5) A browser window should open pointing to `localhost:3000` (or similar depending on any other servers you might be running)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## How to Deploy
+This project uses Firebase for deployment.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+1) Run `firebase init` from the root of the project
+2) Select `hosting`
+3) Set public directory as `build`
+4) Enter `yes` when asked to configure as sing-page app
+5) Enter `no` if asked to overwrite
+6) Run: `npm run deploy` from the root of the project directory to deploy.
+7) Make sure `.firebase/` folder is in your `.gitignore` before committing.
