@@ -1,0 +1,46 @@
+@import '../styles/variables';
+
+.custom-navbar {
+  background-color: $gray-800;
+  height: 100vh;
+}
+
+.brand-icon {
+  margin-top: 4px;
+  margin-left: 4px;
+}
+
+.brand-icon-container {
+  width: 45px;
+  height: 45px;
+  margin-top: 20px;
+  margin-left: 14px;
+  margin-right: 14px;
+}
+
+svg.yellow-400 {
+  stroke: $yellow-400;
+}
+
+svg.teal-600 {
+  stroke: $teal-600;
+}
+
+.user-profile {
+  height: 45px;
+  width: 45px;
+  margin-bottom: 16px;
+}
+
+.user-profile svg {
+  margin-top: 4px;
+  margin-left: 4px;
+}
+
+.custom-nav-items {
+  height: calc(100vh - 126px);
+}
+
+.topic-items svg {
+  margin-bottom: 1.25rem;
+}
