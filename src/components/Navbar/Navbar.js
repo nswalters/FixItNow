@@ -35,10 +35,18 @@ class Navbar extends React.Component {
   }
 
   render() {
+    const linkHome = () => {
+      this.setState({ isServiceSelected: false });
+      this.setState({ isIncidentSelected: false });
+      if (window.location.pathname === '/home') {
+        window.location.reload();
+      }
+    };
+
     return (
       <div>
         <div className="custom-navbar d-flex flex-column justify-content-between">
-          <Link to="/home" className="brand-icon-container">
+          <Link onClick={linkHome} to="/home" className="brand-icon-container">
             <svg className="brand-icon yellow-400" fill="none" width="37" height="37" xmlns="http://www.w3.org/2000/svg">
               <path d="M12.875 1.625v3.75m0 0h11.25m-11.25 0h-3.75a3.75 3.75 0 00-3.75 3.75v3.75m18.75-11.25v3.75m0 0h3.75a3.75 3.75 0 013.75 3.75v3.75m-18.75 18.75v3.75m0-3.75h-3.75a3.75 3.75 0 01-3.75-3.75v-3.75m7.5 7.5h11.25m0 0v3.75m0-3.75h3.75a3.75 3.75 0 003.75-3.75v-3.75m-26.25-11.25h-3.75m3.75 0v11.25m0 0h-3.75m33.75-11.25h-3.75m0 0v11.25m3.75 0h-3.75m-18.75-11.25h11.25v11.25h-11.25v-11.25z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
