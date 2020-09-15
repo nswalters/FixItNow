@@ -7,8 +7,14 @@ import {
 } from 'react-router-dom';
 import './App.scss';
 
+// import firebase from 'firebase/app';
+// import 'firebase/auth';
+
+import fbConnection from '../helpers/data/connection';
 import Navbar from '../components/Navbar/Navbar';
 import Home from '../components/Home/Home';
+
+fbConnection();
 
 class App extends React.Component {
   render() {
