@@ -1,0 +1,47 @@
+@import '../../styles/variables';
+
+.current-status-container {
+  width: 958px;
+  margin-top: 6.25rem;
+
+  .current-service-status-header {
+    font-family: Helvetica Neue;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 150%;
+    color: $gray-700;
+    margin-bottom: 2.5rem;
+  }
+
+  .service-details-container {
+    border: 1px solid $gray-500;
+    border-radius: 20px;
+  }
+
+  .spacer {
+    border-bottom: 0.5px solid $gray-500;
+  }
+
+  .service-name {
+    font-family: Helvetica Neue;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 150%;
+    margin-left: 4rem;
+    color: $gray-800;
+  }
+
+  .service-impact {
+    font-family: Helvetica Neue;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 150%;
+    margin-left: auto;
+    margin-right: 4rem;
+    // TODO: change color based on impact
+    color: $green-500;
+  }
+}
