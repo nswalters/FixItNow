@@ -1,5 +1,7 @@
 import React from 'react';
 
+import CurrentStatus from '../CurrentStatus/CurrentStatus';
+
 import './Home.scss';
 
 class Home extends React.Component {
@@ -19,6 +21,7 @@ class Home extends React.Component {
             </div>
           </div>
         </div>
+        <CurrentStatus />
       </div>
     );
   }
