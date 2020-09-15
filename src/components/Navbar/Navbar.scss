@@ -2,7 +2,8 @@
 
 .custom-navbar {
   background-color: $gray-800;
-  height: 100vh;
+  height: 100%;
+  position: fixed;
 }
 
 .brand-icon {
@@ -38,7 +39,7 @@ svg.teal-600 {
 }
 
 .custom-nav-items {
-  height: calc(100vh - 126px);
+  height: calc(100% - 126px);
 
   .topic-item {
     height: 45px;
