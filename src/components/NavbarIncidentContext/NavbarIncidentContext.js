@@ -1,9 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './NavbarIncidentContext.scss';
 
 class NavbarIncidentContext extends React.Component {
+
   render() {
+    const { toggleSelected } = this.props;
+
     return (
       <div className="navbar-incident-context d-flex flex-column">
         <div className="context-header d-flex justify-content-center align-items-center">
@@ -14,7 +18,7 @@ class NavbarIncidentContext extends React.Component {
         </div>
         <div className="context-items d-flex flex-column">
           <div className="context-item">Create Incident</div>
-          <div className="context-item">Manage Incidents</div>
+          <Link onClick={toggleSelected} to="/incidents" className="context-item">Manage Incidents</Link>
         </div>
       </div>
     );

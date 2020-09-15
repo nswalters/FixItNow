@@ -1,9 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './NavbarServiceContext.scss';
 
 class NavbarServiceContext extends React.Component {
+
   render() {
+    const { toggleSelected } = this.props;
+
     return (
       <div className="navbar-service-context d-flex flex-column">
         <div className="context-header d-flex justify-content-center align-items-center">
@@ -14,7 +18,7 @@ class NavbarServiceContext extends React.Component {
         </div>
         <div className="context-items d-flex flex-column">
           <div className="context-item">Create Service</div>
-          <div className="context-item">Manage Services</div>
+          <Link onClick={toggleSelected} to="/services" className="context-item">Manage Services</Link>
         </div>
       </div>
     );
