@@ -25,10 +25,10 @@ class Navbar extends React.Component {
 
   showNavbarContext = () => {
     if (this.state.isServiceSelected) {
-      return <NavbarServiceContext />;
+      return <NavbarServiceContext toggleSelected={this.toggleServiceSelected} />;
     }
     if (this.state.isIncidentSelected) {
-      return <NavbarIncidentContext selected={this.state.isIncidentSelected} />;
+      return <NavbarIncidentContext toggleSelected={this.toggleIncidentSelected} />;
     }
 
     return '';

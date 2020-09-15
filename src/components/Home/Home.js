@@ -1,4 +1,6 @@
 import React from 'react';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 import CurrentStatus from '../CurrentStatus/CurrentStatus';
 
@@ -7,6 +9,12 @@ import './Home.scss';
 class Home extends React.Component {
   state = {
     heroShown: true,
+  }
+
+  loginClickEvent = (e) => {
+    e.preventDefault();
+    const provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider);
   }
 
   showHero = () => (
@@ -18,7 +26,7 @@ class Home extends React.Component {
             <h1>FiN - Fix it Now!</h1>
             <h4 className="mx-auto d-flex text-center align-items-center">Your single stop for incident management and service status updates.</h4>
             <div className="hero-login-button d-flex justify-content-center">
-              <button className="btn bg-teal-600">Login Today!</button>
+              <button className="btn bg-teal-600" onClick={this.loginClickEvent}>Login Today!</button>
             </div>
           </div>
         </div>
