@@ -44,7 +44,7 @@ const RoutesContainer = ({ authed }) => {
     );
   }
   return (
-    <div className="container">
+    <div className="content-area">
       <Switch>
         <Route path="/home" component={Home} authed={authed} />
         <PrivateRoute path="/services" component={Services} authed={authed} />
