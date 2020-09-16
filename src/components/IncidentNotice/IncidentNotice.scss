@@ -1,0 +1,56 @@
+@import '../../styles/variables';
+
+.active-incident {
+  margin-top: 4.5rem;
+
+  .header {
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 150%;
+  }
+
+  .secondary {
+    color: $orange-200;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 150%;
+  }
+
+  .notice-container {
+    background-color: $orange-500;
+  }
+
+  .details-container {
+    margin-top: 3.25rem;
+    border: 1px solid $orange-500;
+    border-radius: 4px;
+  }
+
+  .incident-status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $red-400;
+    color: white;
+    height: 27px;
+    width: 115px;
+    border-radius: 999px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 150%;
+  }
+
+  .incident-update {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 150%;
+  }
+
+  .incident-last-update-time {
+    font-size: 14px;
+    line-height: 150%;
+    color: $gray-500;
+  }
+
+}
