@@ -80,7 +80,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <BrowserRouter>
-          <Navbar />
+          <Navbar authed={authed} />
           <RoutesContainer authed={authed} />
         </BrowserRouter>
       </div>
