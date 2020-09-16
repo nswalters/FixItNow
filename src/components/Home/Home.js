@@ -3,6 +3,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 
 import CurrentStatus from '../CurrentStatus/CurrentStatus';
+import IncidentNotice from '../IncidentNotice/IncidentNotice';
 
 import './Home.scss';
 
@@ -45,8 +46,11 @@ class Home extends React.Component {
         <div className="content-header">
           <h3 className="teal-600">Fix it Now!</h3>
         </div>
-        {this.state.heroShown ? this.showHero(authed) : ''}
-        <CurrentStatus />
+        <div className="container">
+          {this.state.heroShown ? this.showHero(authed) : ''}
+          <IncidentNotice />
+          <CurrentStatus />
+        </div>
       </div>
     );
   }
