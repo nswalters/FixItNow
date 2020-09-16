@@ -71,7 +71,7 @@ class Navbar extends React.Component {
           </div>
         );
       }
-      return '';
+      return <div></div>;
     };
 
     return (
