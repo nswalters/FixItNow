@@ -44,9 +44,9 @@ const RoutesContainer = ({ authed }) => {
     );
   }
   return (
-    <div className="container">
+    <div className="content-area">
       <Switch>
-        <Route path="/home" component={Home} authed={authed} />
+        <Route path="/home" component={() => <Home authed={authed} />} />
         <PrivateRoute path="/services" component={Services} authed={authed} />
         <PrivateRoute path="/incidents" component={Incidents} authed={authed} />
         <Redirect from="*" to="/home"/>
@@ -80,7 +80,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <BrowserRouter>
-          <Navbar />
+          <Navbar authed={authed} />
           <RoutesContainer authed={authed} />
         </BrowserRouter>
       </div>
