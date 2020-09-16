@@ -1,0 +1,30 @@
+@import '../../styles/variables';
+
+.active-incident {
+  margin-top: 4.5rem;
+
+  .header {
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 150%;
+  }
+
+  .secondary {
+    color: $orange-200;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 150%;
+  }
+
+  .notice-container {
+    background-color: $orange-500;
+  }
+
+  .details-container {
+    margin-top: 3.25rem;
+    border: 1px solid $orange-500;
+    border-radius: 4px;
+  }
+
+}

@@ -5,11 +5,14 @@ import 'firebase/auth';
 import CurrentStatus from '../CurrentStatus/CurrentStatus';
 import IncidentNotice from '../IncidentNotice/IncidentNotice';
 
+import incidentsData from '../../helpers/data/incidents/incidentsData';
+
 import './Home.scss';
 
 class Home extends React.Component {
   state = {
     heroShown: true,
+    incidents: [],
   }
 
   loginClickEvent = (e) => {
@@ -38,6 +41,14 @@ class Home extends React.Component {
     this.setState({ heroShown: false });
   }
 
+  componentDidMount() {
+    incidentsData.getAllPublicIncidents()
+      .then((incidents) => {
+        this.setState({ incidents });
+      })
+      .catch((err) => console.error('Could not get incidents: ', err));
+  }
+
   render() {
     const { authed } = this.props;
 
@@ -48,7 +59,7 @@ class Home extends React.Component {
         </div>
         <div className="container">
           {this.state.heroShown ? this.showHero(authed) : ''}
-          <IncidentNotice />
+          {this.state.incidents.length > 0 ? <IncidentNotice /> : ''}
           <CurrentStatus />
         </div>
       </div>
