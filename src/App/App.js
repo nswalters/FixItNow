@@ -46,7 +46,7 @@ const RoutesContainer = ({ authed }) => {
   return (
     <div className="content-area">
       <Switch>
-        <Route path="/home" component={Home} authed={authed} />
+        <Route path="/home" component={() => <Home authed={authed} />} />
         <PrivateRoute path="/services" component={Services} authed={authed} />
         <PrivateRoute path="/incidents" component={Incidents} authed={authed} />
         <Redirect from="*" to="/home"/>
