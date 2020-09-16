@@ -21,9 +21,9 @@ class IncidentNotice extends Component {
           </div>
           <div className="notice-container-details">
             <div className="active-incident-details-status d-flex flex-row justify-content-between align-items-center px-3">
-              <span className="incident-status py-2">Increased Volume of HTTP 500 Errors</span>
-              <span className="incident-update">Degraded Performance</span>
-              <span className="last-update-time">Nov 24, 2020 06:34AM UTC</span>
+              <span className="incident-status-badge my-2 text-center py-auto">Investigating</span>
+              <span className="incident-update">Somes users are experiencing an increase in 500 errors reported by main webserver.</span>
+              <span className="incident-last-update-time">Nov 24, 2020 06:34AM UTC</span>
             </div>
           </div>
         </div>
