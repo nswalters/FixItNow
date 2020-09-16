@@ -6,13 +6,28 @@ import 'firebase/auth';
 import './NavbarProfileContext.scss';
 
 class NavbarProfileContext extends React.Component {
+  loginClickEvent = () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider);
+  }
 
   logMeOut = () => {
     firebase.auth().signOut();
   }
 
   render() {
-    const { toggleSelected } = this.props;
+    const { toggleSelected, authed } = this.props;
+
+    const authStatusLink = () => {
+      if (authed) {
+        return (
+          <Link onClick={() => { toggleSelected(); this.logMeOut(); }} to="/home" className="context-item">Log Out</Link>
+        );
+      }
+      return (
+        <Link onClick={() => { toggleSelected(); this.loginClickEvent(); }} to="/home" className="context-item">Log In</Link>
+      );
+    };
 
     return (
       <div className="navbar-profile-context d-flex flex-column">
@@ -23,7 +38,7 @@ class NavbarProfileContext extends React.Component {
           <h4>Profile</h4>
         </div>
         <div className="context-items d-flex flex-column">
-          <Link onClick={() => { toggleSelected(); this.logMeOut(); }} to="/home" className="context-item">Log Out</Link>
+          {authStatusLink()}
         </div>
       </div>
     );
