@@ -72,23 +72,29 @@ class App extends React.Component {
       }
     });
 
-    lookupData.fetchLookupImpact()
-      .then((response) => {
-        sessionStorage.setItem('lu_impact', JSON.stringify(response.data));
-      })
-      .catch((err) => console.error('Could not fetch Impact data: ', err));
+    if (!sessionStorage.getItem('lu_impact')) {
+      lookupData.fetchLookupImpact()
+        .then((response) => {
+          sessionStorage.setItem('lu_impact', JSON.stringify(response.data));
+        })
+        .catch((err) => console.error('Could not fetch Impact data: ', err));
+    }
 
-    lookupData.fetchLookupStatusType()
-      .then((response) => {
-        sessionStorage.setItem('lu_status_type', JSON.stringify(response.data));
-      })
-      .catch((err) => console.error('Could not fetch Status Type data: ', err));
+    if (!sessionStorage.getItem('lu_status_type')) {
+      lookupData.fetchLookupStatusType()
+        .then((response) => {
+          sessionStorage.setItem('lu_status_type', JSON.stringify(response.data));
+        })
+        .catch((err) => console.error('Could not fetch Status Type data: ', err));
+    }
 
-    lookupData.fetchLookupSeverity()
-      .then((response) => {
-        sessionStorage.setItem('lu_severity', JSON.stringify(response.data));
-      })
-      .catch((err) => console.error('Could not fetch Severity data: ', err));
+    if (!sessionStorage.getItem('lu_severity')) {
+      lookupData.fetchLookupSeverity()
+        .then((response) => {
+          sessionStorage.setItem('lu_severity', JSON.stringify(response.data));
+        })
+        .catch((err) => console.error('Could not fetch Severity data: ', err));
+    }
   }
 
   componentWillUnmount() {
