@@ -5,7 +5,6 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-import './App.scss';
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -16,6 +15,10 @@ import Home from '../components/Home/Home';
 import Incidents from '../components/Incidents/Incidents';
 import Navbar from '../components/Navbar/Navbar';
 import Services from '../components/Services/Services';
+
+import lookupData from '../helpers/data/lookupData/lookupData';
+
+import './App.scss';
 
 fbConnection();
 
@@ -68,6 +71,24 @@ class App extends React.Component {
         this.setState({ authed: false });
       }
     });
+
+    lookupData.fetchLookupImpact()
+      .then((response) => {
+        sessionStorage.setItem('lu_impact', JSON.stringify(response.data));
+      })
+      .catch((err) => console.error('Could not fetch Impact data: ', err));
+
+    lookupData.fetchLookupStatusType()
+      .then((response) => {
+        sessionStorage.setItem('lu_status_type', JSON.stringify(response.data));
+      })
+      .catch((err) => console.error('Could not fetch Status Type data: ', err));
+
+    lookupData.fetchLookupSeverity()
+      .then((response) => {
+        sessionStorage.setItem('lu_severity', JSON.stringify(response.data));
+      })
+      .catch((err) => console.error('Could not fetch Severity data: ', err));
   }
 
   componentWillUnmount() {
