@@ -3,7 +3,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 
 import CurrentStatus from '../CurrentStatus/CurrentStatus';
-import IncidentNotice from '../IncidentNotice/IncidentNotice';
+import SingleIncidentNotice from '../SingleIncidentNotice/SingleIncidentNotice';
 
 import incidentsData from '../../helpers/data/incidents/incidentsData';
 
@@ -50,7 +50,12 @@ class Home extends React.Component {
   }
 
   render() {
+    const { incidents } = this.state;
     const { authed } = this.props;
+
+    const allIncidents = incidents.map((incident) => (
+      <SingleIncidentNotice key={incident.id} incident={incident} />
+    ));
 
     return (
       <div className="content">
@@ -59,7 +64,7 @@ class Home extends React.Component {
         </div>
         <div className="container">
           {this.state.heroShown ? this.showHero(authed) : ''}
-          {this.state.incidents.length > 0 ? <IncidentNotice /> : ''}
+          {this.state.incidents.length > 0 ? allIncidents : ''}
           <CurrentStatus />
         </div>
       </div>
