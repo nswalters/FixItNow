@@ -12,9 +12,9 @@ import 'firebase/auth';
 import fbConnection from '../helpers/data/connection';
 
 import Home from '../components/Home/Home';
-import Incidents from '../components/Incidents/Incidents';
+import ManageIncidents from '../components/ManageIncidents/ManageIncidents';
+import ManageServices from '../components/ManageServices/ManageServices';
 import Navbar from '../components/Navbar/Navbar';
-import Services from '../components/Services/Services';
 
 import lookupData from '../helpers/data/lookupData/lookupData';
 
@@ -35,12 +35,12 @@ const PublicRoute = ({ component: Component, authed, ...rest }) => {
 
 const PrivateRoute = ({ component: Component, authed, ...rest }) => {
   const routeChecker = (props) => (authed === true
-    ? (<Component {...props} />)
+    ? (<Component {...props} {...rest} />)
     : (<Redirect to={{ pathname: '/auth', state: { from: props.location } }} />));
   return <Route {...rest} render={(props) => routeChecker(props)} />;
 };
 
-const RoutesContainer = ({ authed }) => {
+const RoutesContainer = ({ authed, uid }) => {
   if (authed === null) {
     return (
       <div className="fas fa-spinner fa-spin" id="spinner" />
@@ -50,8 +50,8 @@ const RoutesContainer = ({ authed }) => {
     <div className="content-area">
       <Switch>
         <Route path="/home" component={() => <Home authed={authed} />} />
-        <PrivateRoute path="/services" component={Services} authed={authed} />
-        <PrivateRoute path="/incidents" component={Incidents} authed={authed} />
+        <PrivateRoute path="/services" component={ManageServices} authed={authed} uid={uid} />
+        <PrivateRoute path="/incidents" component={ManageIncidents} authed={authed} uid={uid} />
         <Redirect from="*" to="/home"/>
       </Switch>
     </div>
@@ -61,14 +61,15 @@ const RoutesContainer = ({ authed }) => {
 class App extends React.Component {
   state = {
     authed: null,
+    uid: null,
   }
 
   componentDidMount() {
     this.removeListener = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.setState({ authed: true });
+        this.setState({ authed: true, uid: user.uid });
       } else {
-        this.setState({ authed: false });
+        this.setState({ authed: false, uid: null });
       }
     });
 
@@ -102,13 +103,13 @@ class App extends React.Component {
   }
 
   render() {
-    const { authed } = this.state;
+    const { authed, uid } = this.state;
 
     return (
       <div className="App">
         <BrowserRouter>
           <Navbar authed={authed} />
-          <RoutesContainer authed={authed} />
+          <RoutesContainer authed={authed} uid={uid} />
         </BrowserRouter>
       </div>
     );

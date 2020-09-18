@@ -2,33 +2,33 @@
   "incident" : {
     "incident01" : {
       "created_at" : 1599870966941,
-      "created_by" : "MYUSERIDHERE",
-      "description" : "incident01Description",
-      "impact_id" : "impact01",
+      "created_by" : "NXCEg4X2Zxd2ZEj18ym5vTvdQvq2",
+      "description" : "High packet loss on WAN link",
+      "impact_id" : "impact04",
       "is_public" : false,
       "severity_id" : "severity01",
-      "status_type_id" : "status_type01",
-      "title" : "incident01Title"
+      "status_type_id" : "status_type03",
+      "title" : "Decreased throughput on router001SA2"
     },
     "incident02" : {
       "created_at" : 1599870966941,
-      "created_by" : "MYUSERIDHERE",
-      "description" : "incident02Description",
+      "created_by" : "NXCEg4X2Zxd2ZEj18ym5vTvdQvq2",
+      "description" : "Some users are experiencing an increase in 500 errors reported by main webserver",
       "impact_id" : "impact02",
       "is_public" : true,
       "severity_id" : "severity02",
-      "status_type_id" : "status_type02",
-      "title" : "incident02Title"
+      "status_type_id" : "status_type01",
+      "title" : "Increased Volume of HTTP 500 Errors"
     }
   },
   "incident_user" : {
     "incident_user01" : {
       "incident_id" : "incident01",
-      "user_id" : "MYUSERIDHERE"
+      "user_id" : "aNXCEg4X2Zxd2ZEj18ym5vTvdQvq2"
     },
     "incident_user02" : {
       "incident_id" : "incident02",
-      "user_id" : "MYUSERIDHERE"
+      "user_id" : "NXCEg4X2Zxd2ZEj18ym5vTvdQvq2"
     }
   },
   "log_entry" : {
@@ -53,29 +53,33 @@
   },
   "lu_impact" : {
     "impact01" : {
-      "color" : "MYCOLORHERE",
+      "color" : "#48BB78",
       "name" : "Operational"
     },
     "impact02" : {
-      "color" : "MYCOLORHERE",
+      "color" : "#ED8936",
       "name" : "Degraded Performance"
     },
     "impact03" : {
       "color" : "MYCOLORHERE",
       "name" : "Maintenance"
+    },
+    "impact04" : {
+      "color" : "#C53030",
+      "name" : "Outage"
     }
   },
   "lu_severity" : {
     "severity01" : {
-      "color" : "MYCOLORHERE",
+      "color" : "#C53030",
       "name" : "P1"
     },
     "severity02" : {
-      "color" : "MYCOLORHERE",
+      "color" : "#ED8936",
       "name" : "P2"
     },
     "severity03" : {
-      "color" : "MYCOLORHERE",
+      "color" : "#2F855A",
       "name" : "P3"
     },
     "severity04" : {
@@ -85,22 +89,22 @@
   },
   "lu_status_type" : {
     "status_type01" : {
-      "color" : "MYCOLORHERE",
+      "color" : "#FC8181",
       "name" : "Investigating"
     },
     "status_type02" : {
-      "color" : "MYCOLORHERE",
+      "color" : "#2F855A",
       "name" : "Resolved"
     },
     "status_type03" : {
-      "color" : "MYCOLORHERE",
+      "color" : "#68D391",
       "name" : "Validation"
     }
   },
   "service" : {
     "service01" : {
       "created_at" : "TIMESTAMP",
-      "created_by" : "USERID",
+      "created_by" : "RANDOMUSER",
       "description" : "RabbitMQ instance which queues message notifications for ingestion by client systems.",
       "impact_id" : "impact01",
       "is_public" : true,
@@ -108,7 +112,7 @@
     },
     "service02" : {
       "created_at" : "TIMESTAMP",
-      "created_by" : "USERID",
+      "created_by" : "NXCEg4X2Zxd2ZEj18ym5vTvdQvq2",
       "description" : "Company website which serves as the main client portal to the company's resources.",
       "impact_id" : "impact02",
       "is_public" : true,
@@ -121,7 +125,7 @@
       "service_id" : "service02"
     },
     "service_incident02" : {
-      "incident_id" : "incident_02",
+      "incident_id" : "incident02",
       "service_id" : "service01"
     }
   },
@@ -132,12 +136,12 @@
     },
     "service_user02" : {
       "service_id" : "service02",
-      "user_id" : "MYUSERIDHERE"
+      "user_id" : "NXCEg4X2Zxd2ZEj18ym5vTvdQvq2"
     }
   },
   "user" : {
     "user01" : {
-      "uid" : "MYUSERIDHERE"
+      "uid" : "NXCEg4X2Zxd2ZEj18ym5vTvdQvq2"
     },
     "user02" : {
       "uid" : "SOMEOTHERUSER"
