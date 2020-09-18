@@ -9,7 +9,6 @@ class ManageSingleIncident extends Component {
   render() {
     const { incident } = this.props;
 
-    // const lu_impact = lookupData.readLookupImpact(incident.impact_id);
     const luStatusType = lookupData.readLookupStatusType(incident.status_type_id);
     const luSeverity = lookupData.readLookupSeverity(incident.severity_id);
 
