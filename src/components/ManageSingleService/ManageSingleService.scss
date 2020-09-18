@@ -1,18 +1,5 @@
 @import '../../styles/variables';
 
-.severity-badge {
-  height: 30px;
-  width: 30px;
-  border-radius: 5px;
-}
-
-.severity-badge-text {
-  color: $white;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 150%;
-}
-
 .service-details {
   height: 117px;
   border-bottom: 1px solid $gray-400;
@@ -46,20 +33,6 @@
 
 .bottom-row {
   margin-top: 1.25rem;
-}
-
-.service-status-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background-color: $red-400;
-  color: white;
-  height: 27px;
-  width: 115px;
-  border-radius: 999px;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 150%;
 }
 
 .owner-icon {
