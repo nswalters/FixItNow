@@ -15,6 +15,8 @@ import Home from '../components/Home/Home';
 import ManageIncidents from '../components/ManageIncidents/ManageIncidents';
 import ManageServices from '../components/ManageServices/ManageServices';
 import Navbar from '../components/Navbar/Navbar';
+import ViewSingleIncident from '../components/ViewSingleIncident/ViewSingleIncident';
+import ViewSingleService from '../components/ViewSingleService/ViewSingleService';
 
 import lookupData from '../helpers/data/lookupData/lookupData';
 
@@ -50,7 +52,9 @@ const RoutesContainer = ({ authed, uid }) => {
     <div className="content-area">
       <Switch>
         <Route path="/home" component={() => <Home authed={authed} />} />
+        <PrivateRoute path="/services/:service_id" component={ViewSingleService} authed={authed} uid={uid} />
         <PrivateRoute path="/services" component={ManageServices} authed={authed} uid={uid} />
+        <PrivateRoute path="/incidents/:incident_id" component={ViewSingleIncident} authed={authed} uid={uid} />
         <PrivateRoute path="/incidents" component={ManageIncidents} authed={authed} uid={uid} />
         <Redirect from="*" to="/home"/>
       </Switch>
