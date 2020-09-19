@@ -38,9 +38,9 @@ class NewService extends Component {
                 <div id="new-service-name-help">The user(s) that have ownership of this service.</div>
               </div>
               <div className="new-service-input">
-                <select className="form-control" id="serviceOwnerSelect" required>
-                  <option value="" selected>Select Owner</option>
-                  <option value="" disabled>------------</option>
+                <select className="form-control" id="serviceOwnerSelect" defaultValue={''} required>
+                  <option value="">Select Owner</option>
+                  <option disabled>------------</option>
                   <option value="test">Test</option>
                 </select>
               </div>
@@ -56,9 +56,9 @@ class NewService extends Component {
                 <div id="new-service-name-help">The current impact of the service.</div>
               </div>
               <div className="new-service-input">
-                <select className="form-control" id="serviceImpactSelect" required>
-                  <option value="" selected>Select Impact</option>
-                  <option value="" disabled>------------</option>
+                <select className="form-control" id="serviceImpactSelect" defaultValue={''} required>
+                  <option value="">Select Impact</option>
+                  <option disabled>------------</option>
                   <option value="test">Test</option>
                 </select>
               </div>
@@ -89,7 +89,7 @@ class NewService extends Component {
               </div>
               <div className="new-service-input-checkbox checkbox">
                 <input type="checkbox" id="checkbox" name="" value="isPublic" />
-                <label for="checkbox"></label>
+                <label htmlFor="checkbox"></label>
               </div>
             </div>
             <div className="form-row">
