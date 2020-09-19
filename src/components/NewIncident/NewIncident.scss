@@ -1,0 +1,168 @@
+@import '../../styles/variables';
+
+.new-incident-container {
+  .new-incident-header {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 150%;
+    color: $gray-700;
+    margin-top: 1.5rem;
+    margin-left: 2rem;
+  }
+
+  .new-incident-form-content {
+    margin-top: 1.25rem;
+    margin-left: 3.75rem;
+  }
+
+  #new-incident-name-label {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 150%;
+    color: $gray-700;
+  }
+
+  #new-incident-name-help {
+    font-weight: 300;
+    font-size: 12px;
+    font-style: italic;
+    line-height: 150%;
+    color: $gray-500;
+    max-width: 9rem;
+  }
+
+  .helper-icon {
+    margin-left: 1.25rem;
+  }
+
+  .new-incident-input-checkbox {
+    margin-left: 9rem;
+    width: 4rem;
+
+    label {
+      width: 0px;
+    }
+  }
+
+  input[type=checkbox] {
+    transform: scale(1.5);
+  }
+
+  .new-incident-input {
+    margin-left: 9rem;
+    height: 2.75rem;
+
+    input,
+    select {
+      height: 100%;
+      width: 22.25rem;
+
+      &::placeholder {
+        color: $gray-500;
+      }
+    }
+
+    select {
+      -webkit-appearance: menulist-button;
+      color: black;
+    }
+
+    select:invalid {
+      color: $gray-500;
+    }
+  }
+
+  .form-row {
+    margin-bottom: 1.25rem;
+  }
+
+  .checkbox input[type="checkbox"] {
+    width: auto;
+    opacity: 0.00000001;
+    position: absolute;
+    left: 0;
+    margin-left: -20px;
+  }
+
+  .checkbox label {
+    position: relative;
+  }
+
+  .checkbox label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 4px;
+    width: 22px;
+    height: 22px;
+    transition: transform 0.28s ease;
+    border-radius: 3px;
+    border: 1px solid $gray-500;
+  }
+
+  .checkbox label:after {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 8px;
+    border-bottom: 4px solid $teal-500;
+    border-left: 4px solid $teal-500;
+    -webkit-transform: rotate(-45deg) scale(0);
+    transform: rotate(-45deg) scale(0);
+    transition: transform ease 0.25s;
+    will-change: transform;
+    position: absolute;
+    top: 9px;
+    left: 8px;
+  }
+
+  .checkbox input[type="checkbox"]:checked~label::before {
+    background-color: white;
+  }
+
+  .checkbox input[type="checkbox"]:checked~label::after {
+    -webkit-transform: rotate(-45deg) scale(1);
+    transform: rotate(-45deg) scale(1);
+  }
+
+  .checkbox label {
+    min-height: 34px;
+    display: block;
+    padding-left: 40px;
+    margin-bottom: 0;
+    font-weight: normal;
+    cursor: pointer;
+  }
+
+  .checkbox label span {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+  .checkbox input[type="checkbox"]:focus+label::before {
+    outline: 0;
+  }
+
+  .incident-save-button {
+    height: 36px;
+
+    button {
+      color: white;
+      background-color: $teal-600;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 150%;
+      box-shadow: 0px 2px $gray-700;
+      width: 138px;
+    }
+  }
+
+  .affected-services {
+    .new-incident-input {
+      margin-left: 7.5rem;
+    }
+  }
+}
