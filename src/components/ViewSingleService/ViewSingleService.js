@@ -3,8 +3,10 @@ import React, { Component } from 'react';
 class ViewSingleService extends Component {
   render() {
     return (
-      <div>
-        <h1>Single Service</h1>
+      <div className="content">
+        <div className="content-header">
+          <h3>Service Details</h3>
+        </div>
       </div>
     );
   }

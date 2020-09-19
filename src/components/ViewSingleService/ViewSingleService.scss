@@ -1,0 +1,12 @@
+@import '../../styles/variables';
+
+.content {
+  .content-header {
+    h3 {
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 150%;
+      color: $gray-700;
+    }
+  }
+}
