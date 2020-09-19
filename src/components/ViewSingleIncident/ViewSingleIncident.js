@@ -16,7 +16,11 @@ class ViewSingleIncident extends Component {
 
     incidentsData.getIncidentByIncidentId(incidentId)
       .then((response) => {
-        this.setState({ incident: response.data });
+        if (response.data) {
+          this.setState({ incident: response.data });
+        } else {
+          this.props.history.push('/incidents');
+        }
       })
       .catch((err) => console.error('Could not get incident by incident id: ', err));
   }
