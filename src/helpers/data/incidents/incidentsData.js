@@ -4,6 +4,8 @@ import apiKeys from '../../apiKeys.json';
 
 const baseUrl = apiKeys.firebaseConfig.databaseURL;
 
+const getIncidentByIncidentId = (incidentId) => axios.get(`${baseUrl}/incident/${incidentId}.json`);
+
 const getAllIncidents = () => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/incident.json`)
     .then((response) => {
@@ -57,4 +59,9 @@ const getUserIncidentsByUid = (uid) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-export default { getAllIncidents, getAllPublicIncidents, getUserIncidentsByUid };
+export default {
+  getAllIncidents,
+  getAllPublicIncidents,
+  getIncidentByIncidentId,
+  getUserIncidentsByUid,
+};
