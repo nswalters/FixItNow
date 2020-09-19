@@ -16,7 +16,11 @@ class ViewSingleService extends Component {
 
     servicesData.getServiceByServiceId(serviceId)
       .then((response) => {
-        this.setState({ service: response.data });
+        if (response.data) {
+          this.setState({ service: response.data });
+        } else {
+          this.props.history.push('/services');
+        }
       })
       .catch((err) => console.error('Could not get service by service id: ', err));
   }
