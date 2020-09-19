@@ -4,6 +4,8 @@ import apiKeys from '../../apiKeys.json';
 
 const baseUrl = apiKeys.firebaseConfig.databaseURL;
 
+const getServiceByServiceId = (serviceId) => axios.get(`${baseUrl}/service/${serviceId}.json`);
+
 const getAllPublicServices = () => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/service.json?orderBy="is_public"&equalTo=true`)
     .then((response) => {
@@ -57,4 +59,9 @@ const getUserServicesByUid = (uid) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-export default { getAllServices, getAllPublicServices, getUserServicesByUid };
+export default {
+  getAllServices,
+  getAllPublicServices,
+  getServiceByServiceId,
+  getUserServicesByUid,
+};
