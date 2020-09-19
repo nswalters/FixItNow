@@ -13,16 +13,24 @@ class ViewSingleIncident extends Component {
 
   componentDidMount() {
     const incidentId = this.props.match.params.incident_id;
+    const { uid } = this.props;
 
-    incidentsData.getIncidentByIncidentId(incidentId)
-      .then((response) => {
-        if (response.data) {
-          this.setState({ incident: response.data });
-        } else {
-          this.props.history.push('/incidents');
+    /* Check if user is assigned to this incident, if not, redirect */
+    incidentsData.getUserIncidentsByUid(uid)
+      .then((userIncidents) => {
+        if (userIncidents) {
+          if (userIncidents.find((userIncident) => userIncident.id === incidentId)) {
+            incidentsData.getIncidentByIncidentId(incidentId)
+              .then((response) => {
+                this.setState({ incident: response.data });
+              })
+              .catch((err) => console.error('Could not get incident by incident id: ', err));
+          } else {
+            this.props.history.push('/incidents');
+          }
         }
       })
-      .catch((err) => console.error('Could not get incident by incident id: ', err));
+      .catch((err) => console.error('Could not get user incidents by uid: ', err));
   }
 
   render() {

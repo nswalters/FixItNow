@@ -13,16 +13,24 @@ class ViewSingleService extends Component {
 
   componentDidMount() {
     const serviceId = this.props.match.params.service_id;
+    const { uid } = this.props;
 
-    servicesData.getServiceByServiceId(serviceId)
-      .then((response) => {
-        if (response.data) {
-          this.setState({ service: response.data });
-        } else {
-          this.props.history.push('/services');
+    /* Check if user is assigned to this service, if not, redirect */
+    servicesData.getUserServicesByUid(uid)
+      .then((userServices) => {
+        if (userServices) {
+          if (userServices.find((userService) => userService.id === serviceId)) {
+            servicesData.getServiceByServiceId(serviceId)
+              .then((response) => {
+                this.setState({ service: response.data });
+              })
+              .catch((err) => console.error('Could not get service by service id: ', err));
+          } else {
+            this.props.history.push('/services');
+          }
         }
       })
-      .catch((err) => console.error('Could not get service by service id: ', err));
+      .catch((err) => console.error('Could not get user services by uid: ', err));
   }
 
   render() {
