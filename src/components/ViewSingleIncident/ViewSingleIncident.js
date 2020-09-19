@@ -1,10 +1,33 @@
 /* eslint-disable max-len */
 import React, { Component } from 'react';
 
+import incidentsData from '../../helpers/data/incidents/incidentsData';
+import lookupData from '../../helpers/data/lookupData/lookupData';
+
 import './ViewSingleIncident.scss';
 
 class ViewSingleIncident extends Component {
+  state = {
+    incident: {},
+  }
+
+  componentDidMount() {
+    const incidentId = this.props.match.params.incident_id;
+
+    incidentsData.getIncidentByIncidentId(incidentId)
+      .then((response) => {
+        this.setState({ incident: response.data });
+      })
+      .catch((err) => console.error('Could not get incident by incident id: ', err));
+  }
+
   render() {
+    const { incident } = this.state;
+
+    const luImpact = lookupData.readLookupImpact(incident.impact_id);
+    const luStatusType = lookupData.readLookupStatusType(incident.status_type_id);
+    const luSeverity = lookupData.readLookupSeverity(incident.severity_id);
+
     return (
       <div className="content">
         <div className="content-header">
@@ -14,16 +37,16 @@ class ViewSingleIncident extends Component {
           <div className="incident-info">
             <div className="top-row d-flex flex-row">
               <div className="view-badge d-flex justify-content-center align-items-center">
-                <span className="view-badge-text mx-auto">Public</span>
+                <span className="view-badge-text mx-auto">{ incident.is_public ? 'Public' : 'Private' }</span>
               </div>
-              <div className="incident-info-name flex-grow-1">Increased volume of HTTP 500 errors</div>
-              <span className="incident-status-badge text-center py-auto" style={{ backgroundColor: '#FC8181' }}>Investigating</span>
+              <div className="incident-info-name flex-grow-1">{ incident.title }</div>
+              <span className="incident-status-badge text-center py-auto" style={{ backgroundColor: luStatusType ? luStatusType.color : '' }}>{ luStatusType ? luStatusType.name : ''}</span>
             </div>
             <div className="mid-row d-flex flex-row">
-              <div className="severity-badge d-flex align-items-center" style={{ backgroundColor: '#ED8936' }}>
-                <span className="severity-badge-text">P2</span>
+              <div className="severity-badge d-flex align-items-center" style={{ backgroundColor: luSeverity ? luSeverity.color : '' }}>
+                <span className="severity-badge-text">{ luSeverity ? luSeverity.name : '' }</span>
               </div>
-              <div className="impact-badge flex-grow-1 my-auto">Degraded Performance</div>
+              <div className="impact-badge flex-grow-1 my-auto" style={{ color: luImpact ? luImpact.color : '' }}>{ luImpact ? luImpact.name : '' }</div>
               <div className="incident-owners d-flex flex-row">
                 <div className="individual-owner d-flex flex-row">
                   <svg className="owner-icon my-auto" width="15" height="15" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M7.125 6a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0h-14z" fill="#1A202C"/></svg>
@@ -51,9 +74,7 @@ class ViewSingleIncident extends Component {
           <div className="incident-description">
             <div className="incident-description-header">Description</div>
             <div className="incident-description-body">
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>
-              <p>Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.</p>
-              <p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</p>
+              <p>{ incident.description }</p>
             </div>
           </div>
           <div className="incident-timeline">
@@ -62,7 +83,7 @@ class ViewSingleIncident extends Component {
             <div className="timeline-data">
               <div className="timeline-data-note">
                 <div className="timeline-data-note-header d-flex flex-row">
-                  <svg width="16" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 10h6m-6 4h6m2 5H3a2 2 0 01-2-2V3a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V17a2 2 0 01-2 2z" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <svg width="16" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 10h6m-6 4h6m2 5H3a2 2 0 01-2-2V3a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V17a2 2 0 01-2 2z" stroke="#000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                   <div className="box"></div>
                   <div className="note-content note-left-border top d-flex flex-column">
                     <div className="note-author">John Doe</div>
@@ -73,7 +94,7 @@ class ViewSingleIncident extends Component {
               </div>
               <div className="timeline-data-note">
                 <div className="timeline-data-note-header d-flex flex-row">
-                  <svg width="16" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 10h6m-6 4h6m2 5H3a2 2 0 01-2-2V3a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V17a2 2 0 01-2 2z" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <svg width="16" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 10h6m-6 4h6m2 5H3a2 2 0 01-2-2V3a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V17a2 2 0 01-2 2z" stroke="#000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                   <div className="box"></div>
                   <div className="note-content top d-flex flex-column">
                     <div className="note-author">Jane Doe</div>
