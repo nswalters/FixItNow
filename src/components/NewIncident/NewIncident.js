@@ -30,7 +30,7 @@ class NewIncident extends Component {
             <div className="form-row d-flex flex-row">
               <div className="d-flex flex-column">
                 <div className="new-incident-form-label d-flex flex-row">
-                  <div id="new-incident-name-label">Owner</div>
+                  <div id="new-incident-name-label">Owners</div>
                   <div className="helper-icon">
                     <svg width="13" height="13" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M12.75 6.5a6 6 0 11-12 0 6 6 0 0112 0zm-6-2.25a.75.75 0 00-.65.375.75.75 0 11-1.298-.75A2.25 2.25 0 117.5 7.122v.128a.75.75 0 01-1.5 0V6.5a.75.75 0 01.75-.75.75.75 0 000-1.5zm0 6a.75.75 0 100-1.5.75.75 0 000 1.5z" fill="#2C5282"/></svg>
                   </div>
