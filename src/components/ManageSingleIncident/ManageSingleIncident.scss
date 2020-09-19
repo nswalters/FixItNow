@@ -1,101 +1,103 @@
 @import '../../styles/variables';
 
-.severity-badge {
-  height: 30px;
-  width: 30px;
-  border-radius: 5px;
-}
-
-.severity-badge-text {
-  color: $white;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 150%;
-}
-
 .incident-details {
-  height: 117px;
-  border-bottom: 1px solid $gray-400;
-}
+  .severity-badge {
+    height: 30px;
+    width: 30px;
+    border-radius: 5px;
+  }
 
-.incident-details-name {
-  margin-left: 0.75rem;
-  margin-top: 1.75rem;
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 150%;
-  height: 1.5rem;
-}
+  .severity-badge-text {
+    color: $white;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 150%;
+  }
 
-.view-badge {
-  border: 2px solid $gray-400;
-  height: 13px;
-  width: 78px;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 150%;
-  color: $gray-600;
-}
+  .incident-details {
+    height: 117px;
+    border-bottom: 1px solid $gray-400;
+  }
 
-.view-badge-text {
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 150%;
-  color: $gray-600;
-}
-
-.bottom-row {
-  margin-top: 1.25rem;
-}
-
-.incident-status-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  height: 27px;
-  width: 115px;
-  border-radius: 999px;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 150%;
-}
-
-.owner-icon {
-  margin-left: 1.25rem;
-}
-
-.owner-text {
-  margin-left: 0.25rem;
-  font-weight: 300;
-  font-size: 16px;
-  line-height: 150%;
-}
-
-.owner-more-icon {
-  background-color: $gray-900;
-  border-radius: 999px;
-  height: 21px;
-  width: 21px;
-  margin-left: 1rem;
-}
-
-.owner-more-icon-text {
-  color: white;
-  font-weight: bold;
-  font-size: 12px;
-  line-height: 150%;
-}
-
-.incident-delete-button {
-  height: 25px;
-
-  button {
-    color: white;
-    background-color: $red-600;
-    font-weight: 500;
+  .incident-details-name {
+    margin-left: 0.75rem;
+    margin-top: 1.75rem;
+    font-weight: bold;
     font-size: 16px;
     line-height: 150%;
-    box-shadow: 0px 2px $gray-700;
+    height: 1.5rem;
+  }
+
+  .view-badge {
+    border: 2px solid $gray-400;
+    height: 13px;
+    width: 78px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 150%;
+    color: $gray-600;
+  }
+
+  .view-badge-text {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 150%;
+    color: $gray-600;
+  }
+
+  .bottom-row {
+    margin-top: 1.25rem;
+  }
+
+  .incident-status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    height: 27px;
+    width: 115px;
+    border-radius: 999px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 150%;
+  }
+
+  .owner-icon {
+    margin-left: 1.25rem;
+  }
+
+  .owner-text {
+    margin-left: 0.25rem;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 150%;
+  }
+
+  .owner-more-icon {
+    background-color: $gray-900;
+    border-radius: 999px;
+    height: 21px;
+    width: 21px;
+    margin-left: 1rem;
+  }
+
+  .owner-more-icon-text {
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 150%;
+  }
+
+  .incident-delete-button {
+    height: 25px;
+
+    button {
+      color: white;
+      background-color: $red-600;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 150%;
+      box-shadow: 0px 2px $gray-700;
+    }
   }
 }
