@@ -62,11 +62,11 @@ class Navbar extends React.Component {
       if (authed) {
         return (
           <div className="topic-items mx-auto d-flex flex-column">
-            <div className={`topic-item d-flex justify-content-center align-items-center ${this.state.isServiceSelected ? 'selected' : ''}`}>
-              <svg onClick={ this.toggleServiceSelected } className="teal-600" width="31" height="27" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.292 13.5h20.416m-20.416 0a2.917 2.917 0 01-2.917-2.916V4.75a2.917 2.917 0 012.917-2.917h20.416a2.917 2.917 0 012.917 2.917v5.834a2.917 2.917 0 01-2.917 2.916m-20.416 0a2.917 2.917 0 00-2.917 2.917v5.833a2.917 2.917 0 002.917 2.917h20.416a2.917 2.917 0 002.917-2.917v-5.833a2.917 2.917 0 00-2.917-2.917m-2.916-5.833h.014m-.014 11.666h.014" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            <div onClick={ this.toggleServiceSelected } className={`topic-item d-flex justify-content-center align-items-center ${this.state.isServiceSelected ? 'selected' : ''}`}>
+              <svg className="teal-600" width="31" height="27" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.292 13.5h20.416m-20.416 0a2.917 2.917 0 01-2.917-2.916V4.75a2.917 2.917 0 012.917-2.917h20.416a2.917 2.917 0 012.917 2.917v5.834a2.917 2.917 0 01-2.917 2.916m-20.416 0a2.917 2.917 0 00-2.917 2.917v5.833a2.917 2.917 0 002.917 2.917h20.416a2.917 2.917 0 002.917-2.917v-5.833a2.917 2.917 0 00-2.917-2.917m-2.916-5.833h.014m-.014 11.666h.014" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </div>
-            <div className={`topic-item d-flex justify-content-center align-items-center ${this.state.isIncidentSelected ? 'selected' : ''}`}>
-              <svg onClick={ this.toggleIncidentSelected } className="teal-600" width="31" height="31" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.667V15.5m0 5.833h.015m13.11-5.833a13.125 13.125 0 11-26.25 0 13.125 13.125 0 0126.25 0z" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            <div onClick={ this.toggleIncidentSelected } className={`topic-item d-flex justify-content-center align-items-center ${this.state.isIncidentSelected ? 'selected' : ''}`}>
+              <svg className="teal-600" width="31" height="31" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 9.667V15.5m0 5.833h.015m13.11-5.833a13.125 13.125 0 11-26.25 0 13.125 13.125 0 0126.25 0z" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </div>
           </div>
         );
@@ -84,8 +84,8 @@ class Navbar extends React.Component {
           </Link>
           <div className="custom-nav-items d-flex flex-column justify-content-between">
             {showTopicItems()}
-            <div className="user-profile mx-auto">
-              <svg onClick={ this.toggleProfileSelected } className="teal-600" width="37" height="37" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.602 29.383s0 0 0 0zm0 0A26.135 26.135 0 0118.5 26c4.687 0 9.088 1.228 12.898 3.382m-25.796 0a16.876 16.876 0 0025.796 0m-25.796 0A16.874 16.874 0 011.625 18.5a16.875 16.875 0 1129.773 10.882m0 0s0 0 0 0zM24.125 14.75a5.625 5.625 0 11-11.25 0 5.625 5.625 0 0111.25 0z" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            <div onClick={ this.toggleProfileSelected } className="user-profile mx-auto">
+              <svg className="teal-600" width="37" height="37" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.602 29.383s0 0 0 0zm0 0A26.135 26.135 0 0118.5 26c4.687 0 9.088 1.228 12.898 3.382m-25.796 0a16.876 16.876 0 0025.796 0m-25.796 0A16.874 16.874 0 011.625 18.5a16.875 16.875 0 1129.773 10.882m0 0s0 0 0 0zM24.125 14.75a5.625 5.625 0 11-11.25 0 5.625 5.625 0 0111.25 0z" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </div>
           </div>
         </div>
