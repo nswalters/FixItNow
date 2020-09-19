@@ -17,7 +17,7 @@ class NavbarServiceContext extends React.Component {
           <h4>Services</h4>
         </div>
         <div className="context-items d-flex flex-column">
-          <div className="context-item">Create Service</div>
+          <Link onClick={toggleSelected} to="/services/new" className="context-item">Create Service</Link>
           <Link onClick={toggleSelected} to="/services" className="context-item">Manage Services</Link>
         </div>
       </div>
