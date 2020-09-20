@@ -1,10 +1,65 @@
 /* eslint-disable max-len */
 import React, { Component } from 'react';
 
+import lookupData from '../../helpers/data/lookupData/lookupData';
+import servicesData from '../../helpers/data/services/servicesData';
+import usersData from '../../helpers/data/users/usersData';
+import utils from '../../helpers/utils';
+
 import './NewService.scss';
 
 class NewService extends Component {
+  state = {
+    allUsers: [],
+    description: '',
+    impact: '',
+    is_public: false,
+    name: '',
+    owner: '',
+    uid: this.props.uid,
+  }
+
+  submitFormData = () => {
+    const serviceObject = {
+      created_at: Date.now(),
+      created_by: this.state.uid,
+      description: this.state.description,
+      impact_id: this.state.impact,
+      is_public: this.state.is_public,
+      name: this.state.name,
+    };
+
+    servicesData.createNewService(serviceObject)
+      .then((response) => {
+        const createdServiceId = response.data.name;
+        const serviceUserObject = {
+          service_id: createdServiceId,
+          user_id: this.state.uid,
+        };
+        servicesData.createServiceUser(serviceUserObject);
+
+        return createdServiceId;
+      })
+      .then((createdServiceId) => {
+        this.props.history.push(`/services/${createdServiceId}`);
+      });
+  }
+
+  componentDidMount() {
+    usersData.getAllUsers()
+      .then((response) => {
+        this.setState({ allUsers: utils.collectionMaker(response.data) });
+      })
+      .catch((err) => console.error('Could not get all users: ', err));
+  }
+
   render() {
+    const { allUsers } = this.state;
+    const userOptions = utils.optionsMaker(allUsers);
+
+    const impactArray = utils.collectionMaker(lookupData.readAllLookupImpact());
+    const impactOptions = utils.optionsMaker(impactArray);
+
     return (
       <div className="content">
         <div className="content-header">
@@ -24,7 +79,7 @@ class NewService extends Component {
                 <div id="new-service-name-help">This is the name of the service.</div>
               </div>
               <div className="new-service-input">
-                <input className="form-control" type="text" id="serviceNameInput" placeholder="Service Name" />
+                <input onChange={(event) => this.setState({ name: event.target.value })} className="form-control" type="text" id="serviceNameInput" placeholder="Service Name" />
               </div>
             </div>
             <div className="form-row d-flex flex-row">
@@ -38,10 +93,10 @@ class NewService extends Component {
                 <div id="new-service-name-help">The user(s) that have ownership of this service.</div>
               </div>
               <div className="new-service-input">
-                <select className="form-control" id="serviceOwnerSelect" defaultValue={''} required>
+                <select onChange={(event) => this.setState({ owner: event.target.value })} className="form-control" id="serviceOwnerSelect" defaultValue={''} required>
                   <option value="">Select Owner</option>
                   <option disabled>------------</option>
-                  <option value="test">Test</option>
+                  { userOptions }
                 </select>
               </div>
             </div>
@@ -56,10 +111,10 @@ class NewService extends Component {
                 <div id="new-service-name-help">The current impact of the service.</div>
               </div>
               <div className="new-service-input">
-                <select className="form-control" id="serviceImpactSelect" defaultValue={''} required>
+                <select onChange={(event) => this.setState({ impact: event.target.value })} className="form-control" id="serviceImpactSelect" defaultValue={''} required>
                   <option value="">Select Impact</option>
                   <option disabled>------------</option>
-                  <option value="test">Test</option>
+                  { impactOptions }
                 </select>
               </div>
             </div>
@@ -74,7 +129,7 @@ class NewService extends Component {
                 <div id="new-service-name-help">Describe the service's function within your environment.</div>
               </div>
               <div className="new-service-input">
-                <input className="form-control" type="text" id="serviceDescriptionInput" placeholder="Service Description" />
+                <input onChange={(event) => this.setState({ description: event.target.value })} className="form-control" type="text" id="serviceDescriptionInput" placeholder="Service Description" />
               </div>
             </div>
             <div className="form-row d-flex flex-row">
@@ -88,13 +143,13 @@ class NewService extends Component {
                 <div id="new-service-name-help">Make this service and its status visible to the public.</div>
               </div>
               <div className="new-service-input-checkbox checkbox">
-                <input type="checkbox" id="checkbox" name="" value="isPublic" />
+                <input onChange={(event) => this.setState({ is_public: !this.state.is_public })} type="checkbox" id="checkbox" name="" value="isPublic" />
                 <label htmlFor="checkbox"></label>
               </div>
             </div>
             <div className="form-row">
               <div className="service-save-button d-flex justify-content-center py-auto">
-                <button className="btn py-0">Save Changes</button>
+                <button onClick={this.submitFormData} className="btn py-0">Save Changes</button>
               </div>
             </div>
           </div>

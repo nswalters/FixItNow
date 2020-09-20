@@ -59,7 +59,13 @@ const getUserServicesByUid = (uid) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
+const createNewService = (newServiceObj) => axios.post(`${baseUrl}/service.json`, newServiceObj);
+
+const createServiceUser = (newServiceUserObj) => axios.post(`${baseUrl}/service_user.json`, newServiceUserObj);
+
 export default {
+  createNewService,
+  createServiceUser,
   getAllServices,
   getAllPublicServices,
   getServiceByServiceId,
