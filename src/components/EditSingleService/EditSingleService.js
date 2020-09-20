@@ -7,7 +7,7 @@ import utils from '../../helpers/utils';
 
 import './EditSingleService.scss';
 
-class ViewSingleService extends Component {
+class EditSingleService extends Component {
   state = {
     description: '',
     service: {},
@@ -140,4 +140,4 @@ class ViewSingleService extends Component {
   }
 }
 
-export default ViewSingleService;
+export default EditSingleService;
