@@ -5,7 +5,7 @@ import './ManageSingleService.scss';
 
 class ManageSingleService extends Component {
   render() {
-    const { service } = this.props;
+    const { service, deleteService } = this.props;
 
     return (
       <div className="service-details">
@@ -30,7 +30,7 @@ class ManageSingleService extends Component {
             </div>
           </div>
           <div className="service-delete-button d-flex justify-content-center ml-auto py-auto">
-            <button className="btn py-0">Delete</button>
+            <button onClick={() => { deleteService(service.id); }} className="btn py-0">Delete</button>
           </div>
         </div>
       </div>
