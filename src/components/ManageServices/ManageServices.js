@@ -25,7 +25,7 @@ class ManageServices extends React.Component {
     const { userServices } = this.state;
 
     const allUserServices = userServices.map((service) => (
-      <ManageSingleService key={service.id} service={service} />));
+      <ManageSingleService key={service.id} service={service} history={this.props.history} />));
 
     return (
       <div className="content">
