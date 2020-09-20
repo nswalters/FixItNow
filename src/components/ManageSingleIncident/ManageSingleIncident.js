@@ -7,7 +7,7 @@ import './ManageSingleIncident.scss';
 
 class ManageSingleIncident extends Component {
   render() {
-    const { incident } = this.props;
+    const { incident, deleteIncident } = this.props;
 
     const luStatusType = lookupData.readLookupStatusType(incident.status_type_id);
     const luSeverity = lookupData.readLookupSeverity(incident.severity_id);
@@ -39,7 +39,7 @@ class ManageSingleIncident extends Component {
             </div>
           </div>
           <div className="incident-delete-button d-flex justify-content-center ml-auto py-auto">
-            <button className="btn py-0">Delete</button>
+            <button onClick={() => deleteIncident(incident.id)} className="btn py-0">Delete</button>
           </div>
         </div>
       </div>
