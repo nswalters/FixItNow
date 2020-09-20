@@ -5,12 +5,12 @@ import './ManageSingleService.scss';
 
 class ManageSingleService extends Component {
   render() {
-    const { service } = this.props;
+    const { service, deleteService } = this.props;
 
     return (
       <div className="service-details">
         <div className="top-row d-flex flex-row">
-        <div className="service-details-name">{ service.name }</div>
+        <div onClick={() => this.props.history.push(`/services/${service.id}`)} className="service-details-name">{ service.name }</div>
           <div className="view-badge ml-auto mt-4 d-flex justify-content-center align-items-center">
             <span className="view-badge-text mx-auto">{ service.is_public ? 'Public' : 'Private' }</span>
           </div>
@@ -30,7 +30,7 @@ class ManageSingleService extends Component {
             </div>
           </div>
           <div className="service-delete-button d-flex justify-content-center ml-auto py-auto">
-            <button className="btn py-0">Delete</button>
+            <button onClick={() => { deleteService(service.id); }} className="btn py-0">Delete</button>
           </div>
         </div>
       </div>

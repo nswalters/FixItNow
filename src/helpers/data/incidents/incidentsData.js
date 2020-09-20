@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import utils from '../../utils';
+
 import apiKeys from '../../apiKeys.json';
 
 const baseUrl = apiKeys.firebaseConfig.databaseURL;
@@ -59,9 +61,66 @@ const getUserIncidentsByUid = (uid) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
+const getUserIncidentsByIncidentId = (incidentId) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/incident_user.json?orderBy="incident_id"&equalTo="${incidentId}"`)
+    .then((response) => {
+      const collection = utils.collectionMaker(response.data);
+      resolve(collection);
+    })
+    .catch((err) => reject(err));
+});
+
+const getServiceIncidentsByIncidentId = (incidentId) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/service_incident.json?orderBy="incident_id"&equalTo="${incidentId}"`)
+    .then((response) => {
+      const collection = utils.collectionMaker(response.data);
+      resolve(collection);
+    })
+    .catch((err) => reject(err));
+});
+
+const createNewIncident = (newIncidentObj) => axios.post(`${baseUrl}/incident.json`, newIncidentObj);
+
+const createIncidentUser = (newIncidentUserObj) => axios.post(`${baseUrl}/incident_user.json`, newIncidentUserObj);
+
+const createServiceIncident = (newServiceIncidentObj) => axios.post(`${baseUrl}/service_incident.json`, newServiceIncidentObj);
+
+const deleteIncidentUser = (incidentUserId) => axios.delete(`${baseUrl}/incident_user/${incidentUserId}.json`);
+
+const deleteServiceIncident = (serviceIncidentId) => axios.delete(`${baseUrl}/service_incident/${serviceIncidentId}.json`);
+
+const deleteIncident = (incidentId) => axios.delete(`${baseUrl}/incident/${incidentId}.json`);
+
+const destroyIncident = (incidentId) => new Promise((resolve, reject) => {
+  deleteIncident(incidentId).then(() => {
+    getUserIncidentsByIncidentId(incidentId).then((incidentUserRecords) => {
+      console.error('IUR: ', incidentUserRecords);
+      incidentUserRecords.forEach((incidentUser) => {
+        deleteIncidentUser(incidentUser.id);
+      });
+      getServiceIncidentsByIncidentId(incidentId).then((incidentServiceRecords) => {
+        console.error('ISR: ', incidentServiceRecords);
+        incidentServiceRecords.forEach((incidentService) => {
+          deleteServiceIncident(incidentService.id);
+        });
+        resolve();
+      });
+    });
+  })
+    .catch((err) => reject(err));
+});
+
 export default {
+  createIncidentUser,
+  createNewIncident,
+  createServiceIncident,
+  deleteIncident,
+  deleteIncidentUser,
+  deleteServiceIncident,
+  destroyIncident,
   getAllIncidents,
   getAllPublicIncidents,
   getIncidentByIncidentId,
+  getServiceIncidentsByIncidentId,
   getUserIncidentsByUid,
 };

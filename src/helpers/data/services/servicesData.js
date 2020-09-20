@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import apiKeys from '../../apiKeys.json';
+import utils from '../../utils';
 
 const baseUrl = apiKeys.firebaseConfig.databaseURL;
 
@@ -59,9 +60,51 @@ const getUserServicesByUid = (uid) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
+const getServiceUserByServiceId = (serviceId) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/service_user.json?orderBy="service_id"&equalTo="${serviceId}"`)
+    .then((response) => {
+      const collection = utils.collectionMaker(response.data);
+      resolve(collection);
+    })
+    .catch((err) => reject(err));
+});
+
+const createNewService = (newServiceObj) => axios.post(`${baseUrl}/service.json`, newServiceObj);
+
+const createServiceUser = (newServiceUserObj) => axios.post(`${baseUrl}/service_user.json`, newServiceUserObj);
+
+const deleteService = (serviceId) => axios.delete(`${baseUrl}/service/${serviceId}.json`);
+
+const deleteServiceUserByServiceUserId = (serviceUserId) => axios.delete(`${baseUrl}/service_user/${serviceUserId}.json`);
+
+const deleteServiceUserByServiceId = (serviceId) => new Promise((resolve, reject) => {
+  getServiceUserByServiceId(serviceId).then((serviceUserRecords) => {
+    serviceUserRecords.forEach((serviceUser) => {
+      deleteServiceUserByServiceUserId(serviceUser.id);
+    });
+    resolve();
+  })
+    .catch((err) => reject(err));
+});
+
+const destroyService = (serviceId) => new Promise((resolve, reject) => {
+  deleteService(serviceId)
+    .then(() => {
+      deleteServiceUserByServiceId(serviceId)
+        .then(() => resolve());
+    })
+    .catch((err) => reject(err));
+});
+
 export default {
+  createNewService,
+  createServiceUser,
+  deleteService,
+  deleteServiceUserByServiceId,
+  destroyService,
   getAllServices,
   getAllPublicServices,
   getServiceByServiceId,
+  getServiceUserByServiceId,
   getUserServicesByUid,
 };

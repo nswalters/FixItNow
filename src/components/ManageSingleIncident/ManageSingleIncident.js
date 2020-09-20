@@ -7,7 +7,7 @@ import './ManageSingleIncident.scss';
 
 class ManageSingleIncident extends Component {
   render() {
-    const { incident } = this.props;
+    const { incident, deleteIncident } = this.props;
 
     const luStatusType = lookupData.readLookupStatusType(incident.status_type_id);
     const luSeverity = lookupData.readLookupSeverity(incident.severity_id);
@@ -18,7 +18,7 @@ class ManageSingleIncident extends Component {
           <div className="severity-badge d-flex justify-content-center mt-4" style={{ backgroundColor: luSeverity.color }}>
             <span className="severity-badge-text">{ luSeverity.name }</span>
           </div>
-        <div className="incident-details-name">{ incident.title }</div>
+        <div onClick={() => this.props.history.push(`/incidents/${incident.id}`)} className="incident-details-name">{ incident.title }</div>
           <div className="view-badge ml-auto mt-4 d-flex justify-content-center align-items-center">
             <span className="view-badge-text mx-auto">{ incident.is_public ? 'Public' : 'Private' }</span>
           </div>
@@ -39,7 +39,7 @@ class ManageSingleIncident extends Component {
             </div>
           </div>
           <div className="incident-delete-button d-flex justify-content-center ml-auto py-auto">
-            <button className="btn py-0">Delete</button>
+            <button onClick={() => deleteIncident(incident.id)} className="btn py-0">Delete</button>
           </div>
         </div>
       </div>

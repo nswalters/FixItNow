@@ -11,9 +11,7 @@ class ManageServices extends React.Component {
     userServices: [],
   }
 
-  componentDidMount() {
-    const { uid } = this.props;
-
+  updateUserServices = (uid) => {
     servicesData.getUserServicesByUid(uid)
       .then((userServices) => {
         this.setState({ userServices });
@@ -21,11 +19,29 @@ class ManageServices extends React.Component {
       .catch((err) => console.error('Could not get services by uid: ', err));
   }
 
+  deleteService = (serviceId) => {
+    servicesData.destroyService(serviceId)
+      .then(() => {
+        this.updateUserServices(this.props.uid);
+      })
+      .catch((err) => console.error('Could not delete service by service id: ', err));
+  }
+
+  componentDidMount() {
+    const { uid } = this.props;
+
+    this.updateUserServices(uid);
+  }
+
   render() {
     const { userServices } = this.state;
+    const { uid } = this.props;
 
-    const allUserServices = userServices.map((service) => (
-      <ManageSingleService key={service.id} service={service} />));
+    // console.error('render', this.props, this.state);
+
+    const allUserServices = userServices.filter((record) => (!!record)).map((service) => (
+      <ManageSingleService key={service.id} service={service} history={this.props.history} deleteService={this.deleteService} uid={uid} />
+    ));
 
     return (
       <div className="content">
