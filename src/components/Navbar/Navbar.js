@@ -84,7 +84,7 @@ class Navbar extends React.Component {
           </Link>
           <div className="custom-nav-items d-flex flex-column justify-content-between">
             {showTopicItems()}
-            <div onClick={ this.toggleProfileSelected } className="user-profile mx-auto">
+            <div onClick={ this.toggleProfileSelected } className={`user-profile mx-auto ${this.state.isProfileSelected ? 'selected' : ''}`}>
               <svg className="teal-600" width="37" height="37" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.602 29.383s0 0 0 0zm0 0A26.135 26.135 0 0118.5 26c4.687 0 9.088 1.228 12.898 3.382m-25.796 0a16.876 16.876 0 0025.796 0m-25.796 0A16.874 16.874 0 011.625 18.5a16.875 16.875 0 1129.773 10.882m0 0s0 0 0 0zM24.125 14.75a5.625 5.625 0 11-11.25 0 5.625 5.625 0 0111.25 0z" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </div>
           </div>
