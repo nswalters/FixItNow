@@ -96,6 +96,8 @@ const destroyService = (serviceId) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
+const updateService = (serviceId, newServiceObj) => axios.put(`${baseUrl}/service/${serviceId}.json`, newServiceObj);
+
 export default {
   createNewService,
   createServiceUser,
@@ -107,4 +109,5 @@ export default {
   getServiceByServiceId,
   getServiceUserByServiceId,
   getUserServicesByUid,
+  updateService,
 };
