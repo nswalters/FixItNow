@@ -70,7 +70,7 @@ class ViewSingleService extends Component {
             </div>
             <div className="bottom-row d-flex flex-row">
               <div className="service-edit-button d-flex justify-content-center py-auto">
-                <button className="btn py-0">Edit</button>
+                <button onClick={() => this.props.history.push(`/services/${this.props.match.params.service_id}/edit`)} className="btn py-0">Edit</button>
               </div>
               <div className="service-delete-button d-flex justify-content-center ml-auto py-auto">
                 <button className="btn py-0">Delete</button>
