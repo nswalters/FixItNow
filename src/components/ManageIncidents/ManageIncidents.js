@@ -25,7 +25,7 @@ class ManageIncidents extends React.Component {
     const { userIncidents } = this.state;
 
     const allUserIncidents = userIncidents.map((incident) => (
-      <ManageSingleIncident key={incident.id} incident={incident} />));
+      <ManageSingleIncident key={incident.id} incident={incident} history={this.props.history} />));
 
     return (
       <div className="content">

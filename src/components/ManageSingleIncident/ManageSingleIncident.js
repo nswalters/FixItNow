@@ -18,7 +18,7 @@ class ManageSingleIncident extends Component {
           <div className="severity-badge d-flex justify-content-center mt-4" style={{ backgroundColor: luSeverity.color }}>
             <span className="severity-badge-text">{ luSeverity.name }</span>
           </div>
-        <div className="incident-details-name">{ incident.title }</div>
+        <div onClick={() => this.props.history.push(`/incidents/${this.props.incident.id}`)} className="incident-details-name">{ incident.title }</div>
           <div className="view-badge ml-auto mt-4 d-flex justify-content-center align-items-center">
             <span className="view-badge-text mx-auto">{ incident.is_public ? 'Public' : 'Private' }</span>
           </div>
