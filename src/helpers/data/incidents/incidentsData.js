@@ -94,12 +94,10 @@ const deleteIncident = (incidentId) => axios.delete(`${baseUrl}/incident/${incid
 const destroyIncident = (incidentId) => new Promise((resolve, reject) => {
   deleteIncident(incidentId).then(() => {
     getUserIncidentsByIncidentId(incidentId).then((incidentUserRecords) => {
-      console.error('IUR: ', incidentUserRecords);
       incidentUserRecords.forEach((incidentUser) => {
         deleteIncidentUser(incidentUser.id);
       });
       getServiceIncidentsByIncidentId(incidentId).then((incidentServiceRecords) => {
-        console.error('ISR: ', incidentServiceRecords);
         incidentServiceRecords.forEach((incidentService) => {
           deleteServiceIncident(incidentService.id);
         });
