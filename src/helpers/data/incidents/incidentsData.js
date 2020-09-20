@@ -59,7 +59,16 @@ const getUserIncidentsByUid = (uid) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
+const createNewIncident = (newIncidentObj) => axios.post(`${baseUrl}/incident.json`, newIncidentObj);
+
+const createIncidentUser = (newIncidentUserObj) => axios.post(`${baseUrl}/incident_user.json`, newIncidentUserObj);
+
+const createServiceIncident = (newServiceIncidentObj) => axios.post(`${baseUrl}/service_incident.json`, newServiceIncidentObj);
+
 export default {
+  createIncidentUser,
+  createNewIncident,
+  createServiceIncident,
   getAllIncidents,
   getAllPublicIncidents,
   getIncidentByIncidentId,
