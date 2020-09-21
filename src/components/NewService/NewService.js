@@ -143,7 +143,7 @@ class NewService extends Component {
                 <div id="new-service-name-help">Make this service and its status visible to the public.</div>
               </div>
               <div className="new-service-input-checkbox checkbox">
-                <input onChange={(event) => this.setState({ is_public: !this.state.is_public })} type="checkbox" id="checkbox" name="" value="isPublic" />
+                <input onChange={() => this.setState({ is_public: !this.state.is_public })} type="checkbox" id="checkbox" name="" value="isPublic" />
                 <label htmlFor="checkbox"></label>
               </div>
             </div>

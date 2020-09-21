@@ -108,6 +108,10 @@ const destroyIncident = (incidentId) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
+const updateIncident = (incidentId, newIncidentObj) => axios.put(`${baseUrl}/incident/${incidentId}.json`, newIncidentObj);
+
+const updateServiceIncident = (serviceIncidentId, newServiceIncidentObj) => axios.put(`${baseUrl}/service_incident/${serviceIncidentId}.json`, newServiceIncidentObj);
+
 export default {
   createIncidentUser,
   createNewIncident,
@@ -121,4 +125,6 @@ export default {
   getIncidentByIncidentId,
   getServiceIncidentsByIncidentId,
   getUserIncidentsByUid,
+  updateIncident,
+  updateServiceIncident,
 };

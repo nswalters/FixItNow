@@ -111,7 +111,7 @@
       "name" : "Message Queue"
     },
     "service02" : {
-      "created_at" : "TIMESTAMP",
+      "created_at" : "1600635857101",
       "created_by" : "NXCEg4X2Zxd2ZEj18ym5vTvdQvq2",
       "description" : "Company website which serves as the main client portal to the company's resources.",
       "impact_id" : "impact02",

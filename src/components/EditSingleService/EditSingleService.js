@@ -3,12 +3,39 @@ import React, { Component } from 'react';
 
 import servicesData from '../../helpers/data/services/servicesData';
 import lookupData from '../../helpers/data/lookupData/lookupData';
+import utils from '../../helpers/utils';
 
-import './ViewSingleService.scss';
+import './EditSingleService.scss';
 
-class ViewSingleService extends Component {
+class EditSingleService extends Component {
   state = {
+    description: '',
     service: {},
+    name: '',
+    impact: '',
+    uid: this.props.uid,
+    is_public: '',
+    created_by: '',
+    created_at: '',
+  }
+
+  submitFormData = () => {
+    const serviceObj = {
+      updated_at: Date.now(),
+      updated_by: this.state.uid,
+      description: this.state.description,
+      impact_id: this.state.impact,
+      is_public: this.state.is_public,
+      name: this.state.name,
+      created_by: this.state.created_by,
+      created_at: this.state.created_at,
+    };
+
+    servicesData.updateService(this.props.match.params.service_id, serviceObj)
+      .then((response) => {
+        const updatedServiceId = response.data.name;
+        this.props.history.push(`/services/${updatedServiceId}`);
+      });
   }
 
   componentDidMount() {
@@ -22,7 +49,15 @@ class ViewSingleService extends Component {
           if (userServices.find((userService) => userService.id === serviceId)) {
             servicesData.getServiceByServiceId(serviceId)
               .then((response) => {
-                this.setState({ service: response.data });
+                this.setState({
+                  service: response.data,
+                  name: response.data.name,
+                  impact: response.data.impact_id,
+                  description: response.data.description,
+                  is_public: response.data.is_public,
+                  created_by: response.data.created_by,
+                  created_at: response.data.created_at,
+                });
               })
               .catch((err) => console.error('Could not get service by service id: ', err));
           } else {
@@ -37,6 +72,8 @@ class ViewSingleService extends Component {
     const { service } = this.state;
 
     const luImpact = lookupData.readLookupImpact(service.impact_id);
+    const impactArray = utils.collectionMaker(lookupData.readAllLookupImpact());
+    const impactOptions = utils.optionsMaker(impactArray);
 
     return (
       <div className="content">
@@ -46,14 +83,25 @@ class ViewSingleService extends Component {
         <div className="service-details-container container">
           <div className="service-info">
             <div className="top-row d-flex flex-row">
-              <div className="view-badge d-flex justify-content-center align-items-center">
-                <span className="view-badge-text mx-auto">{ service.is_public ? 'Public' : 'Private' }</span>
+              <select onChange={(event) => this.setState({ is_public: Boolean(parseInt(event.target.value, 2)) })} className="view-badge d-flex justify-content-center align-items-center" id="editPublicStatus" value={this.state.is_public ? 1 : 0} required>
+                <option value="1">Public</option>
+                <option value="0">Private</option>
+              </select>
+              <div className="service-info-name flex-grow-1">
+                <input onChange={(event) => this.setState({ name: event.target.value })} className="form-control" type="text" id="editServiceNameInput" defaultValue={ service.name } />
               </div>
-              <div className="service-info-name flex-grow-1">{ service.name }</div>
             </div>
             <div className="mid-row d-flex flex-row">
               <div className="severity-badge d-flex align-items-center"></div>
-              <div className="impact-badge flex-grow-1 my-auto" style={{ color: luImpact ? luImpact.color : '' }}>{ luImpact ? luImpact.name : '' }</div>
+              <select
+                onChange={(event) => this.setState({ impact: event.target.value })}
+                className="impact-badge flex-grow-1 my-auto"
+                style={{ color: luImpact ? luImpact.color : '' }}
+                id="editImpact" value={this.state.impact}
+                required
+              >
+                { impactOptions }
+              </select>
               <div className="service-owners d-flex flex-row">
                 <div className="individual-owner d-flex flex-row">
                   <svg className="owner-icon my-auto" width="15" height="15" fill="none" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M7.125 6a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0h-14z" fill="#1A202C"/></svg>
@@ -70,7 +118,7 @@ class ViewSingleService extends Component {
             </div>
             <div className="bottom-row d-flex flex-row">
               <div className="service-edit-button d-flex justify-content-center py-auto">
-                <button onClick={() => this.props.history.push(`/services/${this.props.match.params.service_id}/edit`)} className="btn py-0">Edit</button>
+                <button onClick={ this.submitFormData } className="btn py-0">Save</button>
               </div>
               <div className="service-delete-button d-flex justify-content-center ml-auto py-auto">
                 <button className="btn py-0">Delete</button>
@@ -80,7 +128,9 @@ class ViewSingleService extends Component {
           <div className="service-description">
             <div className="service-description-header">Description</div>
             <div className="service-description-body">
-              <p>{ service.description }</p>
+              <div>
+                <textarea defaultValue={ service.description } rows={10} cols={120} onChange={(event) => { this.setState({ description: event.target.value }); }} />
+              </div>
             </div>
           </div>
         </div>
@@ -89,4 +139,4 @@ class ViewSingleService extends Component {
   }
 }
 
-export default ViewSingleService;
+export default EditSingleService;
