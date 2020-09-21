@@ -13,6 +13,14 @@ class ViewSingleIncident extends Component {
     affectedServices: '',
   }
 
+  deleteIncident = (incidentId) => {
+    incidentsData.destroyIncident(incidentId)
+      .then(() => {
+        this.props.history.push('/incidents/');
+      })
+      .catch((err) => console.error('Could not delete incident by incident id: ', err));
+  }
+
   componentDidMount() {
     const incidentId = this.props.match.params.incident_id;
     const { uid } = this.props;
@@ -89,7 +97,7 @@ class ViewSingleIncident extends Component {
                 <button onClick={() => this.props.history.push(`/incidents/${this.props.match.params.incident_id}/edit`)} className="btn py-0">Edit</button>
               </div>
     <span className="affected-service-badge text-center py-auto my-auto" style={{ backgroundColor: '#CBD5E0' }}><span className="affected-service-badge-text text-truncate tooltipTest">{this.state.affectedServiceName}<span className="tooltiptext">{this.state.affectedServiceName}</span></span></span>
-              <div className="incident-delete-button d-flex justify-content-center ml-auto py-auto">
+              <div onClick={() => this.deleteIncident(this.props.match.params.incident_id)} className="incident-delete-button d-flex justify-content-center ml-auto py-auto">
                 <button className="btn py-0">Delete</button>
               </div>
             </div>

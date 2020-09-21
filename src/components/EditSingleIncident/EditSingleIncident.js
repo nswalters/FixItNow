@@ -56,6 +56,14 @@ class EditSingleIncident extends Component {
       });
   }
 
+  deleteIncident = (incidentId) => {
+    incidentsData.destroyIncident(incidentId)
+      .then(() => {
+        this.props.history.push('/incidents');
+      })
+      .catch((err) => console.error('Could not delete incident by incident id: ', err));
+  }
+
   componentDidMount() {
     const incidentId = this.props.match.params.incident_id;
     const { uid } = this.props;
@@ -189,7 +197,7 @@ class EditSingleIncident extends Component {
               >
                 { serviceOptions }
               </select>
-              <div className="incident-delete-button d-flex justify-content-center ml-auto py-auto">
+              <div onClick={() => this.deleteIncident(this.props.match.params.incident_id)} className="incident-delete-button d-flex justify-content-center ml-auto py-auto">
                 <button className="btn py-0">Delete</button>
               </div>
             </div>
