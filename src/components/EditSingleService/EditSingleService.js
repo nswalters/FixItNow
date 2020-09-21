@@ -13,7 +13,6 @@ class EditSingleService extends Component {
     service: {},
     name: '',
     impact: '',
-    showOptionsMenu: false,
     uid: this.props.uid,
     is_public: '',
     created_by: '',
@@ -84,9 +83,9 @@ class EditSingleService extends Component {
         <div className="service-details-container container">
           <div className="service-info">
             <div className="top-row d-flex flex-row">
-              <select onChange={() => this.setState({ is_public: !this.state.is_public })} className="view-badge d-flex justify-content-center align-items-center" id="editPublicStatus" defaultValue={''} required>
-                <option value="true">Public</option>
-                <option value="false">Private</option>
+              <select onChange={(event) => this.setState({ is_public: Boolean(parseInt(event.target.value, 2)) })} className="view-badge d-flex justify-content-center align-items-center" id="editPublicStatus" value={this.state.is_public ? 1 : 0} required>
+                <option value="1">Public</option>
+                <option value="0">Private</option>
               </select>
               <div className="service-info-name flex-grow-1">
                 <input onChange={(event) => this.setState({ name: event.target.value })} className="form-control" type="text" id="editServiceNameInput" defaultValue={ service.name } />
