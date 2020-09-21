@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 
 import incidentsData from '../../helpers/data/incidents/incidentsData';
+import servicesData from '../../helpers/data/services/servicesData';
 import lookupData from '../../helpers/data/lookupData/lookupData';
 
 import './ViewSingleIncident.scss';
@@ -9,6 +10,7 @@ import './ViewSingleIncident.scss';
 class ViewSingleIncident extends Component {
   state = {
     incident: {},
+    affectedServices: '',
   }
 
   componentDidMount() {
@@ -31,6 +33,15 @@ class ViewSingleIncident extends Component {
         }
       })
       .catch((err) => console.error('Could not get user incidents by uid: ', err));
+
+    incidentsData.getServiceIncidentsByIncidentId(incidentId)
+      .then((response) => {
+        servicesData.getServiceByServiceId(response[0].service_id)
+          .then((resp) => {
+            this.setState({ affectedServiceName: resp.data.name });
+          });
+      })
+      .catch((err) => console.error('Could not get service incidents by incident id: ', err));
   }
 
   render() {
@@ -75,9 +86,9 @@ class ViewSingleIncident extends Component {
             </div>
             <div className="bottom-row d-flex flex-row">
               <div className="incident-edit-button d-flex justify-content-center py-auto">
-                <button className="btn py-0">Edit</button>
+                <button onClick={() => this.props.history.push(`/incidents/${this.props.match.params.incident_id}/edit`)} className="btn py-0">Edit</button>
               </div>
-              <span className="affected-service-badge text-center py-auto my-auto" style={{ backgroundColor: '#CBD5E0' }}>Website</span>
+              <span className="affected-service-badge text-center py-auto my-auto" style={{ backgroundColor: '#CBD5E0' }}>{this.state.affectedServiceName}</span>
               <div className="incident-delete-button d-flex justify-content-center ml-auto py-auto">
                 <button className="btn py-0">Delete</button>
               </div>
