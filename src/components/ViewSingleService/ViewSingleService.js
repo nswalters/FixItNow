@@ -11,6 +11,14 @@ class ViewSingleService extends Component {
     service: {},
   }
 
+  deleteService = (serviceId) => {
+    servicesData.destroyService(serviceId)
+      .then(() => {
+        this.props.history.push('/services');
+      })
+      .catch((err) => console.error('Could not delete service by service id: ', err));
+  }
+
   componentDidMount() {
     const serviceId = this.props.match.params.service_id;
     const { uid } = this.props;
@@ -73,7 +81,7 @@ class ViewSingleService extends Component {
                 <button onClick={() => this.props.history.push(`/services/${this.props.match.params.service_id}/edit`)} className="btn py-0">Edit</button>
               </div>
               <div className="service-delete-button d-flex justify-content-center ml-auto py-auto">
-                <button className="btn py-0">Delete</button>
+                <button onClick={() => this.deleteService(this.props.match.params.service_id)} className="btn py-0">Delete</button>
               </div>
             </div>
           </div>
