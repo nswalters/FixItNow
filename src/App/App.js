@@ -12,6 +12,7 @@ import 'firebase/auth';
 import fbConnection from '../helpers/data/connection';
 
 import EditSingleService from '../components/EditSingleService/EditSingleService';
+import EditSingleIncident from '../components/EditSingleIncident/EditSingleIncident';
 import Home from '../components/Home/Home';
 import ManageIncidents from '../components/ManageIncidents/ManageIncidents';
 import ManageServices from '../components/ManageServices/ManageServices';
@@ -60,6 +61,7 @@ const RoutesContainer = ({ authed, uid }) => {
         <PrivateRoute path="/services/:service_id" component={ViewSingleService} authed={authed} uid={uid} />
         <PrivateRoute path="/services" component={ManageServices} authed={authed} uid={uid} />
         <PrivateRoute path="/incidents/new" component={NewIncident} authed={authed} uid={uid} />
+        <PrivateRoute path="/incidents/:incident_id/edit" component={EditSingleIncident} authed={authed} uid={uid} />
         <PrivateRoute path="/incidents/:incident_id" component={ViewSingleIncident} authed={authed} uid={uid} />
         <PrivateRoute path="/incidents" component={ManageIncidents} authed={authed} uid={uid} />
         <Redirect from="*" to="/home"/>
