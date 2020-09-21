@@ -18,7 +18,8 @@
       "is_public" : true,
       "severity_id" : "severity02",
       "status_type_id" : "status_type01",
-      "title" : "Increased Volume of HTTP 500 Errors"
+      "title" : "Increased Volume of HTTP 500 Errors",
+      "updated_at" : 1600650640413
     }
   },
   "incident_user" : {
@@ -116,7 +117,9 @@
       "description" : "Company website which serves as the main client portal to the company's resources.",
       "impact_id" : "impact02",
       "is_public" : true,
-      "name" : "Website"
+      "name" : "Website",
+      "updated_at" : 1600650516818,
+      "updated_by" : "NXCEg4X2Zxd2ZEj18ym5vTvdQvq2"
     }
   },
   "service_incident" : {
@@ -126,7 +129,7 @@
     },
     "service_incident02" : {
       "incident_id" : "incident02",
-      "service_id" : "service01"
+      "service_id" : "service02"
     }
   },
   "service_user" : {
@@ -141,9 +144,11 @@
   },
   "user" : {
     "user01" : {
+      "name" : "Nick",
       "uid" : "NXCEg4X2Zxd2ZEj18ym5vTvdQvq2"
     },
     "user02" : {
+      "name" : "OtherUser",
       "uid" : "SOMEOTHERUSER"
     }
   }

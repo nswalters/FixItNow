@@ -44,7 +44,8 @@ class Home extends React.Component {
   componentDidMount() {
     incidentsData.getAllPublicIncidents()
       .then((incidents) => {
-        this.setState({ incidents });
+        const filterResolvedIncidents = incidents.filter((incident) => incident.status_type_id !== 'status_type02');
+        this.setState({ incidents: filterResolvedIncidents });
       })
       .catch((err) => console.error('Could not get incidents: ', err));
   }
