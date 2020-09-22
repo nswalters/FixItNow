@@ -1,6 +1,6 @@
 # Fix It Now!
 
-![stability](https://img.shields.io/badge/status-WIP-lightgrey)
+![stability](https://img.shields.io/badge/status-Deployed-Green)
 
 This is my front-end capstone project that I created while participating in the [Nashville Software School - Full Stack Web Developer Python/Django](http://nashvillesoftwareschool.com).
 
@@ -12,7 +12,7 @@ One of the things I’ve faced in my career of working with various systems, is 
 _To be added later._
 
 ## Deployed Project
-_To be added later._
+[Deployed App - Fix it Now! Capstone](https://fix-it-now-capstone.web.app/)
 
 ## Technologies Used
 [![JavaScript](https://img.shields.io/badge/-JavaScript-2c9fcc?style=flat-square)](#) [![SASS](https://img.shields.io/badge/-SASS-2c9fcc?style=flat-square)](#) [![HTML](https://img.shields.io/badge/-HTML-2c9fcc?style=flat-square)](#) [![Firebase](https://img.shields.io/badge/-Firebase-2c9fcc?style=flat-square)](#) [![Axios](https://img.shields.io/badge/-Axios-2c9fcc?style=flat-square)](#) [![React](https://img.shields.io/badge/-React-2c9fcc?style=flat-square)](#)
