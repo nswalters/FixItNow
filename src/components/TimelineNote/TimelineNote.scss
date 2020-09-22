@@ -1,0 +1,46 @@
+@import '../../styles/variables';
+
+.incident-timeline {
+  .timeline-data {
+    margin-top: 2rem;
+  }
+
+  .timeline-data-note {
+    margin-top: 0.5rem;
+
+    .timeline-data-note-header {
+      svg {
+        position: absolute;
+        z-index: 2;
+        background-color: white;
+      }
+
+      .box {
+        position: absolute;
+        z-index: 1;
+        background-color: white;
+        height: 20px;
+        width: 16px;
+        transform: translateY(10px);
+      }
+    }
+
+    .note-content {
+      padding-left: 1.25rem;
+      margin-left: 0.5rem;
+    }
+
+    .note-left-border {
+      border-left: 2px solid $gray-300;
+    }
+
+    .note-timestamp {
+      color: $gray-500;
+    }
+
+    .note-text {
+      margin-top: 0.5rem;
+      padding-bottom: 1.5rem;
+    }
+  }
+}
