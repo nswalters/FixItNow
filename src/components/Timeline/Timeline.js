@@ -31,7 +31,13 @@ class Timeline extends Component {
   render() {
     const { notes } = this.props;
 
-    const timelineNotes = notes.map((note, idx, arr) => <TimelineNote key={note.id} note={note} leftBorder={(idx < arr.length - 1) ? 'note-left-border' : '' } />);
+    const timelineNotes = notes.map((note, idx, arr) => <TimelineNote
+    key={note.id}
+    changeNotes={this.state.changeNotes}
+    note={note}
+    uid={this.props.uid}
+    leftBorder={(idx < arr.length - 1) ? 'note-left-border' : '' }
+    />);
 
     return (
       <div className="incident-timeline">

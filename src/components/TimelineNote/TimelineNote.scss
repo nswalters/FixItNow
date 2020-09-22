@@ -9,7 +9,7 @@
     margin-top: 0.5rem;
 
     .timeline-data-note-header {
-      svg {
+      .note-icon {
         position: absolute;
         z-index: 2;
         background-color: white;
@@ -22,6 +22,10 @@
         height: 20px;
         width: 16px;
         transform: translateY(10px);
+      }
+
+      .note-delete-icon {
+        stroke: $red-400;
       }
     }
 
