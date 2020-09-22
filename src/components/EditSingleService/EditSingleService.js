@@ -41,8 +41,7 @@ class EditSingleService extends Component {
 
     servicesData.updateService(this.props.match.params.service_id, serviceObj)
       .then((response) => {
-        const updatedServiceId = response.data.name;
-        this.props.history.push(`/services/${updatedServiceId}`);
+        this.props.history.push(`/services/${this.props.match.params.service_id}`);
       });
   }
 
