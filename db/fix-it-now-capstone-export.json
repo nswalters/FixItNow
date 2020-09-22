@@ -1,155 +1,167 @@
 {
-  "incident" : {
-    "incident01" : {
-      "created_at" : 1599870966941,
-      "created_by" : "NXCEg4X2Zxd2ZEj18ym5vTvdQvq2",
-      "description" : "High packet loss on WAN link",
-      "impact_id" : "impact04",
-      "is_public" : false,
-      "severity_id" : "severity01",
-      "status_type_id" : "status_type03",
-      "title" : "Decreased throughput on router001SA2"
+  "incident": {
+    "incident01": {
+      "created_at": 1599870966941,
+      "created_by": "NXCEg4X2Zxd2ZEj18ym5vTvdQvq2",
+      "description": "High packet loss on WAN link",
+      "impact_id": "impact04",
+      "is_public": false,
+      "severity_id": "severity01",
+      "status_type_id": "status_type03",
+      "title": "Decreased throughput on router001SA2"
     },
-    "incident02" : {
-      "created_at" : 1599870966941,
-      "created_by" : "NXCEg4X2Zxd2ZEj18ym5vTvdQvq2",
-      "description" : "Some users are experiencing an increase in 500 errors reported by main webserver",
-      "impact_id" : "impact02",
-      "is_public" : true,
-      "severity_id" : "severity02",
-      "status_type_id" : "status_type01",
-      "title" : "Increased Volume of HTTP 500 Errors",
-      "updated_at" : 1600650640413
+    "incident02": {
+      "created_at": 1599870966941,
+      "created_by": "NXCEg4X2Zxd2ZEj18ym5vTvdQvq2",
+      "description": "Some users are experiencing an increase in 500 errors reported by main webserver",
+      "impact_id": "impact02",
+      "is_public": true,
+      "severity_id": "severity02",
+      "status_type_id": "status_type01",
+      "title": "Increased Volume of HTTP 500 Errors",
+      "updated_at": 1600650640413
     }
   },
-  "incident_user" : {
-    "incident_user01" : {
-      "incident_id" : "incident01",
-      "user_id" : "aNXCEg4X2Zxd2ZEj18ym5vTvdQvq2"
+  "incident_user": {
+    "incident_user01": {
+      "incident_id": "incident01",
+      "user_id": "aNXCEg4X2Zxd2ZEj18ym5vTvdQvq2"
     },
-    "incident_user02" : {
-      "incident_id" : "incident02",
-      "user_id" : "NXCEg4X2Zxd2ZEj18ym5vTvdQvq2"
+    "incident_user02": {
+      "incident_id": "incident02",
+      "user_id": "NXCEg4X2Zxd2ZEj18ym5vTvdQvq2"
     }
   },
-  "log_entry" : {
-    "log_entry01" : {
-      "content" : "This is my first note!",
-      "created_at" : "TIMESTAMP",
-      "created_by" : "MYUSERIDHERE",
-      "incident_id" : "incident01"
+  "lu_impact": {
+    "impact01": {
+      "color": "#48BB78",
+      "name": "Operational"
     },
-    "log_entry02" : {
-      "content" : "Yeah, another note. Woohoo. Yay.",
-      "created_at" : "TIMESTAMP",
-      "created_by" : "MYUSERIDHERE",
-      "incident_id" : "incident01"
+    "impact02": {
+      "color": "#ED8936",
+      "name": "Degraded Performance"
     },
-    "log_entry03" : {
-      "content" : "Note on the other incident.",
-      "created_at" : "TIMESTAMP",
-      "created_by" : "SOMEOTHERUSER",
-      "incident_id" : "incident02"
+    "impact03": {
+      "color": "MYCOLORHERE",
+      "name": "Maintenance"
+    },
+    "impact04": {
+      "color": "#C53030",
+      "name": "Outage"
     }
   },
-  "lu_impact" : {
-    "impact01" : {
-      "color" : "#48BB78",
-      "name" : "Operational"
+  "lu_severity": {
+    "severity01": {
+      "color": "#C53030",
+      "name": "P1"
     },
-    "impact02" : {
-      "color" : "#ED8936",
-      "name" : "Degraded Performance"
+    "severity02": {
+      "color": "#ED8936",
+      "name": "P2"
     },
-    "impact03" : {
-      "color" : "MYCOLORHERE",
-      "name" : "Maintenance"
+    "severity03": {
+      "color": "#2F855A",
+      "name": "P3"
     },
-    "impact04" : {
-      "color" : "#C53030",
-      "name" : "Outage"
+    "severity04": {
+      "color": "MYCOLORHERE",
+      "name": "M"
     }
   },
-  "lu_severity" : {
-    "severity01" : {
-      "color" : "#C53030",
-      "name" : "P1"
+  "lu_status_type": {
+    "status_type01": {
+      "color": "#FC8181",
+      "name": "Investigating"
     },
-    "severity02" : {
-      "color" : "#ED8936",
-      "name" : "P2"
+    "status_type02": {
+      "color": "#2F855A",
+      "name": "Resolved"
     },
-    "severity03" : {
-      "color" : "#2F855A",
-      "name" : "P3"
-    },
-    "severity04" : {
-      "color" : "MYCOLORHERE",
-      "name" : "M"
+    "status_type03": {
+      "color": "#68D391",
+      "name": "Validation"
     }
   },
-  "lu_status_type" : {
-    "status_type01" : {
-      "color" : "#FC8181",
-      "name" : "Investigating"
+  "note": {
+    "note01": {
+      "content": "This is my first note!",
+      "created_at": "1600732423456",
+      "created_by": "MYUSERIDHERE",
+      "incident_id": "incident01"
     },
-    "status_type02" : {
-      "color" : "#2F855A",
-      "name" : "Resolved"
+    "note02": {
+      "content": "Yeah, another note. Woohoo. Yay.",
+      "created_at": "1600732440012",
+      "created_by": "MYUSERIDHERE",
+      "incident_id": "incident01"
     },
-    "status_type03" : {
-      "color" : "#68D391",
-      "name" : "Validation"
+    "note03": {
+      "content": "Note on the other incident.",
+      "created_at": "1600732442406",
+      "created_by": "SOMEOTHERUSER",
+      "incident_id": "incident02"
+    },
+    "note04": {
+      "content": "test",
+      "created_at": "1600732449999",
+      "created_by": "TESTUSER",
+      "incident_id": "incident02"
+    },
+    "note05": {
+      "content": "hahahhahaaahahahaa",
+      "created_at": "1600732999999",
+      "created_by": "Joe Dirte",
+      "incident_id": "incident02"
     }
   },
-  "service" : {
-    "service01" : {
-      "created_at" : "TIMESTAMP",
-      "created_by" : "RANDOMUSER",
-      "description" : "RabbitMQ instance which queues message notifications for ingestion by client systems.",
-      "impact_id" : "impact01",
-      "is_public" : true,
-      "name" : "Message Queue"
+  "service": {
+    "service01": {
+      "created_at": "TIMESTAMP",
+      "created_by": "RANDOMUSER",
+      "description": "RabbitMQ instance which queues message notifications for ingestion by client systems.",
+      "impact_id": "impact01",
+      "is_public": true,
+      "name": "Message Queue"
     },
-    "service02" : {
-      "created_at" : "1600635857101",
-      "created_by" : "NXCEg4X2Zxd2ZEj18ym5vTvdQvq2",
-      "description" : "Company website which serves as the main client portal to the company's resources.",
-      "impact_id" : "impact02",
-      "is_public" : true,
-      "name" : "Website",
-      "updated_at" : 1600650516818,
-      "updated_by" : "NXCEg4X2Zxd2ZEj18ym5vTvdQvq2"
+    "service02": {
+      "created_at": "1600635857101",
+      "created_by": "NXCEg4X2Zxd2ZEj18ym5vTvdQvq2",
+      "description": "Company website which serves as the main client portal to the company's resources.",
+      "impact_id": "impact02",
+      "is_public": true,
+      "name": "Website",
+      "updated_at": 1600650516818,
+      "updated_by": "NXCEg4X2Zxd2ZEj18ym5vTvdQvq2"
     }
   },
-  "service_incident" : {
-    "service_incident01" : {
-      "incident_id" : "incident01",
-      "service_id" : "service02"
+  "service_incident": {
+    "service_incident01": {
+      "incident_id": "incident01",
+      "service_id": "service02"
     },
-    "service_incident02" : {
-      "incident_id" : "incident02",
-      "service_id" : "service02"
+    "service_incident02": {
+      "incident_id": "incident02",
+      "service_id": "service02"
     }
   },
-  "service_user" : {
-    "service_user01" : {
-      "service_id" : "service01",
-      "user_id" : "SOMEOTHERUSER"
+  "service_user": {
+    "service_user01": {
+      "service_id": "service01",
+      "user_id": "SOMEOTHERUSER"
     },
-    "service_user02" : {
-      "service_id" : "service02",
-      "user_id" : "NXCEg4X2Zxd2ZEj18ym5vTvdQvq2"
+    "service_user02": {
+      "service_id": "service02",
+      "user_id": "NXCEg4X2Zxd2ZEj18ym5vTvdQvq2"
     }
   },
-  "user" : {
-    "user01" : {
-      "name" : "Nick",
-      "uid" : "NXCEg4X2Zxd2ZEj18ym5vTvdQvq2"
+  "user": {
+    "user01": {
+      "name": "Nick",
+      "uid": "NXCEg4X2Zxd2ZEj18ym5vTvdQvq2"
     },
-    "user02" : {
-      "name" : "OtherUser",
-      "uid" : "SOMEOTHERUSER"
+    "user02": {
+      "name": "OtherUser",
+      "uid": "SOMEOTHERUSER"
     }
   }
 }

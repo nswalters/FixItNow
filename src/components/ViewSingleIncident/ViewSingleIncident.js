@@ -1,7 +1,10 @@
 /* eslint-disable max-len */
 import React, { Component } from 'react';
 
+import Timeline from '../Timeline/Timeline';
+
 import incidentsData from '../../helpers/data/incidents/incidentsData';
+import notesData from '../../helpers/data/notes/notesData';
 import servicesData from '../../helpers/data/services/servicesData';
 import lookupData from '../../helpers/data/lookupData/lookupData';
 
@@ -11,6 +14,7 @@ class ViewSingleIncident extends Component {
   state = {
     incident: {},
     affectedServices: '',
+    notes: [],
   }
 
   deleteIncident = (incidentId) => {
@@ -19,6 +23,15 @@ class ViewSingleIncident extends Component {
         this.props.history.push('/incidents/');
       })
       .catch((err) => console.error('Could not delete incident by incident id: ', err));
+  }
+
+  changeNotes = (incidentId) => {
+    notesData.getNotesByIncidentId(incidentId)
+      .then((notes) => {
+        notes.sort((a, b) => ((a.created_at > b.created_at) ? 1 : -1)).reverse();
+        this.setState({ notes });
+      })
+      .catch((err) => console.error('Could not get notes by incident id: ', err));
   }
 
   componentDidMount() {
@@ -50,10 +63,12 @@ class ViewSingleIncident extends Component {
           });
       })
       .catch((err) => console.error('Could not get service incidents by incident id: ', err));
+
+    this.changeNotes(incidentId);
   }
 
   render() {
-    const { incident } = this.state;
+    const { incident, notes } = this.state;
 
     const luImpact = lookupData.readLookupImpact(incident.impact_id);
     const luStatusType = lookupData.readLookupStatusType(incident.status_type_id);
@@ -96,7 +111,7 @@ class ViewSingleIncident extends Component {
               <div className="incident-edit-button d-flex justify-content-center py-auto">
                 <button onClick={() => this.props.history.push(`/incidents/${this.props.match.params.incident_id}/edit`)} className="btn py-0">Edit</button>
               </div>
-    <span className="affected-service-badge text-center py-auto my-auto" style={{ backgroundColor: '#CBD5E0' }}><span className="affected-service-badge-text text-truncate tooltipTest">{this.state.affectedServiceName}<span className="tooltiptext">{this.state.affectedServiceName}</span></span></span>
+              <span className="affected-service-badge text-center py-auto my-auto" style={{ backgroundColor: '#CBD5E0' }}><span className="affected-service-badge-text text-truncate tooltipTest">{this.state.affectedServiceName}<span className="tooltiptext">{this.state.affectedServiceName}</span></span></span>
               <div onClick={() => this.deleteIncident(this.props.match.params.incident_id)} className="incident-delete-button d-flex justify-content-center ml-auto py-auto">
                 <button className="btn py-0">Delete</button>
               </div>
@@ -108,34 +123,7 @@ class ViewSingleIncident extends Component {
               <p>{ incident.description }</p>
             </div>
           </div>
-          <div className="incident-timeline">
-            <div className="incident-timeline-header">Timeline</div>
-            <input className="incident-note-form form-control" type="text" placeholder="Add a note..."></input>
-            <div className="timeline-data">
-              <div className="timeline-data-note">
-                <div className="timeline-data-note-header d-flex flex-row">
-                  <svg width="16" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 10h6m-6 4h6m2 5H3a2 2 0 01-2-2V3a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V17a2 2 0 01-2 2z" stroke="#000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  <div className="box"></div>
-                  <div className="note-content note-left-border top d-flex flex-column">
-                    <div className="note-author">John Doe</div>
-                    <div className="note-timestamp">Nov 24, 2020 13:52 UTC</div>
-                    <div className="note-text">I think we are going to need to increase the maximum CPU capacity in the webserver farm and auto-scale to support the new load profile.</div>
-                  </div>
-                </div>
-              </div>
-              <div className="timeline-data-note">
-                <div className="timeline-data-note-header d-flex flex-row">
-                  <svg width="16" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 10h6m-6 4h6m2 5H3a2 2 0 01-2-2V3a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V17a2 2 0 01-2 2z" stroke="#000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  <div className="box"></div>
-                  <div className="note-content top d-flex flex-column">
-                    <div className="note-author">Jane Doe</div>
-                    <div className="note-timestamp">Nov 24, 2020 12:02 UTC</div>
-                    <div className="note-text">So far, I’m seeing extremely high CPU contention and thrashing happening within our main webserver farm.  This mostly hosts our GIF servers for cat videos.</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Timeline notes={notes} uid={this.props.uid} history={this.props.history} match={this.props.match} changeNotes={this.changeNotes} />
         </div>
       </div>
     );
