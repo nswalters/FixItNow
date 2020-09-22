@@ -25,6 +25,15 @@ class ViewSingleIncident extends Component {
       .catch((err) => console.error('Could not delete incident by incident id: ', err));
   }
 
+  changeNotes = (incidentId) => {
+    notesData.getNotesByIncidentId(incidentId)
+      .then((notes) => {
+        notes.sort((a, b) => ((a.created_at > b.created_at) ? 1 : -1)).reverse();
+        this.setState({ notes });
+      })
+      .catch((err) => console.error('Could not get notes by incident id: ', err));
+  }
+
   componentDidMount() {
     const incidentId = this.props.match.params.incident_id;
     const { uid } = this.props;
@@ -55,11 +64,7 @@ class ViewSingleIncident extends Component {
       })
       .catch((err) => console.error('Could not get service incidents by incident id: ', err));
 
-    notesData.getNotesByIncidentId(incidentId)
-      .then((notes) => {
-        this.setState({ notes });
-      })
-      .catch((err) => console.error('Could not get notes by incident id: ', err));
+    this.changeNotes(incidentId);
   }
 
   render() {
@@ -106,7 +111,7 @@ class ViewSingleIncident extends Component {
               <div className="incident-edit-button d-flex justify-content-center py-auto">
                 <button onClick={() => this.props.history.push(`/incidents/${this.props.match.params.incident_id}/edit`)} className="btn py-0">Edit</button>
               </div>
-    <span className="affected-service-badge text-center py-auto my-auto" style={{ backgroundColor: '#CBD5E0' }}><span className="affected-service-badge-text text-truncate tooltipTest">{this.state.affectedServiceName}<span className="tooltiptext">{this.state.affectedServiceName}</span></span></span>
+              <span className="affected-service-badge text-center py-auto my-auto" style={{ backgroundColor: '#CBD5E0' }}><span className="affected-service-badge-text text-truncate tooltipTest">{this.state.affectedServiceName}<span className="tooltiptext">{this.state.affectedServiceName}</span></span></span>
               <div onClick={() => this.deleteIncident(this.props.match.params.incident_id)} className="incident-delete-button d-flex justify-content-center ml-auto py-auto">
                 <button className="btn py-0">Delete</button>
               </div>
@@ -118,7 +123,7 @@ class ViewSingleIncident extends Component {
               <p>{ incident.description }</p>
             </div>
           </div>
-          <Timeline notes={notes} />
+          <Timeline notes={notes} uid={this.props.uid} history={this.props.history} match={this.props.match} changeNotes={this.changeNotes} />
         </div>
       </div>
     );
