@@ -1,7 +1,10 @@
 /* eslint-disable max-len */
 import React, { Component } from 'react';
 
+import Timeline from '../Timeline/Timeline';
+
 import incidentsData from '../../helpers/data/incidents/incidentsData';
+import notesData from '../../helpers/data/notes/notesData';
 import servicesData from '../../helpers/data/services/servicesData';
 import lookupData from '../../helpers/data/lookupData/lookupData';
 import utils from '../../helpers/utils';
@@ -12,6 +15,7 @@ class EditSingleIncident extends Component {
   state = {
     incident: {},
     allServices: [],
+    notes: [],
     affectedServices: '',
     created_at: '',
     created_by: '',
@@ -22,6 +26,15 @@ class EditSingleIncident extends Component {
     status_type_id: '',
     title: '',
     uid: this.props.uid,
+  }
+
+  changeNotes = (incidentId) => {
+    notesData.getNotesByIncidentId(incidentId)
+      .then((notes) => {
+        notes.sort((a, b) => ((a.created_at > b.created_at) ? 1 : -1)).reverse();
+        this.setState({ notes });
+      })
+      .catch((err) => console.error('Could not get notes by incident id: ', err));
   }
 
   submitFormData = () => {
@@ -110,10 +123,12 @@ class EditSingleIncident extends Component {
           });
       })
       .catch((err) => console.error('Could not get service incidents by incident id: ', err));
+
+    this.changeNotes(incidentId);
   }
 
   render() {
-    const { incident, allServices } = this.state;
+    const { incident, allServices, notes } = this.state;
 
     const serviceOptions = utils.optionsMaker(allServices);
 
@@ -210,34 +225,7 @@ class EditSingleIncident extends Component {
               </div>
             </div>
           </div>
-          <div className="incident-timeline">
-            <div className="incident-timeline-header">Timeline</div>
-            <input className="incident-note-form form-control" type="text" placeholder="Add a note..."></input>
-            <div className="timeline-data">
-              <div className="timeline-data-note">
-                <div className="timeline-data-note-header d-flex flex-row">
-                  <svg width="16" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 10h6m-6 4h6m2 5H3a2 2 0 01-2-2V3a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V17a2 2 0 01-2 2z" stroke="#000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  <div className="box"></div>
-                  <div className="note-content note-left-border top d-flex flex-column">
-                    <div className="note-author">John Doe</div>
-                    <div className="note-timestamp">Nov 24, 2020 13:52 UTC</div>
-                    <div className="note-text">I think we are going to need to increase the maximum CPU capacity in the webserver farm and auto-scale to support the new load profile.</div>
-                  </div>
-                </div>
-              </div>
-              <div className="timeline-data-note">
-                <div className="timeline-data-note-header d-flex flex-row">
-                  <svg width="16" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 10h6m-6 4h6m2 5H3a2 2 0 01-2-2V3a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V17a2 2 0 01-2 2z" stroke="#000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  <div className="box"></div>
-                  <div className="note-content top d-flex flex-column">
-                    <div className="note-author">Jane Doe</div>
-                    <div className="note-timestamp">Nov 24, 2020 12:02 UTC</div>
-                    <div className="note-text">So far, I’m seeing extremely high CPU contention and thrashing happening within our main webserver farm.  This mostly hosts our GIF servers for cat videos.</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Timeline notes={notes} uid={this.props.uid} history={this.props.history} match={this.props.match} changeNotes={this.changeNotes} />
         </div>
       </div>
     );
