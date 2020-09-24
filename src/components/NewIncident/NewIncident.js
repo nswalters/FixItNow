@@ -43,20 +43,19 @@ class NewIncident extends Component {
           incident_id: createdIncidentId,
           user_id: this.state.uid,
         };
-        incidentsData.createIncidentUser(incidentUserObject);
-
-        const serviceIncidentObject = {
-          incident_id: response.data.name,
-          service_id: this.state.affectedServices,
-        };
-        incidentsData.createServiceIncident(serviceIncidentObject);
-
-        return createdIncidentId;
-      })
-      .then((createdIncidentId) => {
-        this.props.history.push(`/incidents/${createdIncidentId}`);
+        incidentsData.createIncidentUser(incidentUserObject)
+          .then(() => {
+            const serviceIncidentObject = {
+              incident_id: response.data.name,
+              service_id: this.state.affectedServices,
+            };
+            incidentsData.createServiceIncident(serviceIncidentObject)
+              .then(() => {
+                this.props.history.push(`/incidents/${createdIncidentId}`);
+              });
+          });
       });
-  }
+  };
 
   componentDidMount() {
     usersData.getAllUsers()
