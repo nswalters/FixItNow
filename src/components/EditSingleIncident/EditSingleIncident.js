@@ -40,7 +40,7 @@ class EditSingleIncident extends Component {
     const editedIncidentId = this.props.match.params.incident_id;
 
     incidentsData.updateIncident(editedIncidentId, incidentObj)
-      .then((response) => {
+      .then(() => {
         const serviceIncidentObj = {
           incident_id: editedIncidentId,
           service_id: this.state.affectedServices,
