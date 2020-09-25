@@ -99,9 +99,11 @@ const destroyIncident = (incidentId) => new Promise((resolve, reject) => {
       });
       getServiceIncidentsByIncidentId(incidentId).then((incidentServiceRecords) => {
         incidentServiceRecords.forEach((incidentService) => {
-          deleteServiceIncident(incidentService.id);
+          deleteServiceIncident(incidentService.id)
+            .then(() => {
+              resolve();
+            });
         });
-        resolve();
       });
     });
   })
