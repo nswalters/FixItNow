@@ -13,4 +13,6 @@ const getUserByUid = (uid) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-export default { getAllUsers, getUserByUid };
+const updateUser = (uid, newUserObj) => axios.put(`${baseUrl}/user/${uid}.json`, newUserObj);
+
+export default { getAllUsers, getUserByUid, updateUser };
