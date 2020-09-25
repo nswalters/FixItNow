@@ -23,6 +23,7 @@ import ViewSingleIncident from '../components/ViewSingleIncident/ViewSingleIncid
 import ViewSingleService from '../components/ViewSingleService/ViewSingleService';
 
 import lookupData from '../helpers/data/lookupData/lookupData';
+import usersData from '../helpers/data/users/usersData';
 
 import './App.scss';
 
@@ -79,6 +80,15 @@ class App extends React.Component {
   componentDidMount() {
     this.removeListener = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
+        usersData.getUserByUid(user.uid)
+          .then((userObj) => {
+            // eslint-disable-next-line camelcase
+            const { first_name, last_name } = { first_name: user.displayName.split(' ')[0], last_name: user.displayName.split(' ')[1] };
+            const newUserObj = { first_name, last_name, ...userObj };
+            const userId = newUserObj.id;
+            delete newUserObj.id;
+            usersData.updateUser(userId, newUserObj);
+          });
         this.setState({ authed: true, uid: user.uid });
       } else {
         this.setState({ authed: false, uid: null });
