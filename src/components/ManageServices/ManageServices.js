@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ManageSingleService from '../ManageSingleService/ManageSingleService';
+import PromptForNewItem from '../PromptForNewItem/PromptForNewItem';
 
 import servicesData from '../../helpers/data/services/servicesData';
 
@@ -37,11 +38,13 @@ class ManageServices extends React.Component {
     const { userServices } = this.state;
     const { uid } = this.props;
 
-    // console.error('render', this.props, this.state);
-
-    const allUserServices = userServices.filter((record) => (!!record)).map((service) => (
+    let allUserServices = userServices.filter((record) => (!!record)).map((service) => (
       <ManageSingleService key={service.id} service={service} history={this.props.history} deleteService={this.deleteService} uid={uid} />
     ));
+
+    if (allUserServices.length === 0) {
+      allUserServices = <PromptForNewItem props={this.props} isService={true} />;
+    }
 
     return (
       <div className="content">

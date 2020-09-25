@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ManageSingleIncident from '../ManageSingleIncident/ManageSingleIncident';
+import PromptForNewItem from '../PromptForNewItem/PromptForNewItem';
 
 import incidentsData from '../../helpers/data/incidents/incidentsData';
 
@@ -36,8 +37,12 @@ class ManageIncidents extends React.Component {
   render() {
     const { userIncidents } = this.state;
 
-    const allUserIncidents = userIncidents.map((incident) => (
+    let allUserIncidents = userIncidents.map((incident) => (
       <ManageSingleIncident key={incident.id} incident={incident} history={this.props.history} deleteIncident={this.deleteIncident} />));
+
+    if (allUserIncidents.length === 0) {
+      allUserIncidents = <PromptForNewItem props={this.props} />;
+    }
 
     return (
       <div className="content">
