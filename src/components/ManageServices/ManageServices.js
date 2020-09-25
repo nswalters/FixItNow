@@ -10,12 +10,16 @@ import './ManageServices.scss';
 class ManageServices extends React.Component {
   state = {
     userServices: [],
+    showHero: false,
   }
 
   updateUserServices = (uid) => {
     servicesData.getUserServicesByUid(uid)
       .then((userServices) => {
         this.setState({ userServices });
+        if (userServices.length === 0) {
+          this.setState({ showHero: true });
+        }
       })
       .catch((err) => console.error('Could not get services by uid: ', err));
   }
@@ -35,16 +39,12 @@ class ManageServices extends React.Component {
   }
 
   render() {
-    const { userServices } = this.state;
+    const { userServices, showHero } = this.state;
     const { uid } = this.props;
 
-    let allUserServices = userServices.filter((record) => (!!record)).map((service) => (
+    const allUserServices = userServices.map((service) => (
       <ManageSingleService key={service.id} service={service} history={this.props.history} deleteService={this.deleteService} uid={uid} />
     ));
-
-    if (allUserServices.length === 0) {
-      allUserServices = <PromptForNewItem props={this.props} isService={true} />;
-    }
 
     return (
       <div className="content">
@@ -52,7 +52,7 @@ class ManageServices extends React.Component {
           <h3>Manage Services</h3>
         </div>
         <div className="service-list-container container">
-          { allUserServices }
+          { showHero ? <PromptForNewItem props={this.props} isService={true} /> : allUserServices }
         </div>
       </div>
     );

@@ -10,12 +10,16 @@ import './ManageIncidents.scss';
 class ManageIncidents extends React.Component {
   state = {
     userIncidents: [],
+    showHero: false,
   }
 
   updateUserIncidents = (uid) => {
     incidentsData.getUserIncidentsByUid(uid)
       .then((userIncidents) => {
         this.setState({ userIncidents });
+        if (userIncidents.length === 0) {
+          this.setState({ showHero: true });
+        }
       })
       .catch((err) => console.error('Could not get incidents by uid: ', err));
   }
@@ -35,14 +39,10 @@ class ManageIncidents extends React.Component {
   }
 
   render() {
-    const { userIncidents } = this.state;
+    const { userIncidents, showHero } = this.state;
 
-    let allUserIncidents = userIncidents.map((incident) => (
+    const allUserIncidents = userIncidents.map((incident) => (
       <ManageSingleIncident key={incident.id} incident={incident} history={this.props.history} deleteIncident={this.deleteIncident} />));
-
-    if (allUserIncidents.length === 0) {
-      allUserIncidents = <PromptForNewItem props={this.props} />;
-    }
 
     return (
       <div className="content">
@@ -50,7 +50,7 @@ class ManageIncidents extends React.Component {
           <h3>Manage Incidents</h3>
         </div>
         <div className="incident-list-container container">
-          { allUserIncidents }
+          { showHero ? <PromptForNewItem props={this.props} /> : allUserIncidents }
         </div>
       </div>
     );
