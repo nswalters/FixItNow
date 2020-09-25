@@ -80,9 +80,9 @@ const deleteServiceUserByServiceUserId = (serviceUserId) => axios.delete(`${base
 const deleteServiceUserByServiceId = (serviceId) => new Promise((resolve, reject) => {
   getServiceUserByServiceId(serviceId).then((serviceUserRecords) => {
     serviceUserRecords.forEach((serviceUser) => {
-      deleteServiceUserByServiceUserId(serviceUser.id);
+      deleteServiceUserByServiceUserId(serviceUser.id)
+        .then(() => resolve());
     });
-    resolve();
   })
     .catch((err) => reject(err));
 });
