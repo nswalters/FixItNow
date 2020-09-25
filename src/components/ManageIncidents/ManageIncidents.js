@@ -36,7 +36,7 @@ class ManageIncidents extends React.Component {
   render() {
     const { userIncidents } = this.state;
 
-    const allUserIncidents = userIncidents.filter((record) => (!!record)).map((incident) => (
+    const allUserIncidents = userIncidents.map((incident) => (
       <ManageSingleIncident key={incident.id} incident={incident} history={this.props.history} deleteIncident={this.deleteIncident} />));
 
     return (
