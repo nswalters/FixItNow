@@ -83,10 +83,12 @@ class App extends React.Component {
         usersData.getUserByUid(user.uid)
           .then((userObj) => {
             // eslint-disable-next-line camelcase
+            console.error('ORIGINAL: ', userObj);
+            console.error('ID: ', user.uid);
             const { first_name, last_name } = { first_name: user.displayName.split(' ')[0], last_name: user.displayName.split(' ')[1] };
-            const newUserObj = { first_name, last_name, ...userObj };
-            const userId = newUserObj.id;
-            delete newUserObj.id;
+            const name = first_name + ' ' + last_name;
+            const userId = user.uid;
+            const newUserObj = {first_name, last_name, name, uid: userId};
             usersData.updateUser(userId, newUserObj);
           });
         this.setState({ authed: true, uid: user.uid });
