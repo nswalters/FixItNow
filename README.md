@@ -9,7 +9,7 @@ The goal of this project is to build an application which helps document service
 One of the things I’ve faced in my career of working with various systems, is that communicating updates with all potential stakeholders (public or internal) and then maintaining a record of that communication for later analyses can be difficult (this also includes the spousal unit at home for the various technologies the family uses).  This is my attempt at creating a centralized, easy-to-update application that supports those goals.
 
 ## Screenshot
-_To be added later._
+![App Screenshot](https://i.imgur.com/zUmtnfE.png)
 
 ## Deployed Project
 [Deployed App - Fix it Now! Capstone](https://fix-it-now-capstone.web.app/)
